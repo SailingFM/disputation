@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link href="captionss/captionss.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Perceptual Segmentation of Visual Streams by Tracking of Objects and Parts</title>
     <meta name="author" content="Jérémie Papon">
@@ -17,8 +18,6 @@
   </head>
 
   <body>
-    <!-- Slides! -->
-
     <div class="reveal">
       <div class="slides">
         <section>
@@ -42,6 +41,7 @@
           
         </section>
 
+        <!-- MOTIVATION -->
         <section>
           <h2>How do we learn to perceive objects?</h2>
           <blockquote>“Infants appear to perceive objects by analyzing three-dimensional surface arrangements and motions... [they] divide perceptual arrays into units that move as connected wholes, that move separately from one another, that tend to maintain their size and shape over motion, and that tend to act upon each other only on contact.” *</blockquote>
@@ -67,13 +67,82 @@
         <section>
           <h2>Observations have no semantic meaning.</h2>
           <p>How can we create meaningful spatial and temporal partitioning of discrete sensor observations?</p>
-          <video src="assets/sdo-plasma-rain-yt720.webm" width="100%" muted
-                 controls loop class="slideautostart"></video>
-          <p class="lcred">NASA Solar Dynamics Observatory AIA
-          — <a href="http://youtu.be/M4kT0xoCiPg">YouTube</a></p>
+          <video src="" width="100%" controls loop class="slideautostart"></video>
+          <p class="lcred">TODO A Video of Human Manipulation</p>
         </section>
 
+        <!-- Existing Stuff -->
+        <section>
+          <h2>Parsing Video Streams -<br> Existing Methodologies</h2>
+          <p><strong>Video Object Segmentation</strong> 
+              e.g.Abramov et al.<cite></cite>
+              Grundmann et al.<cite></cite></p>
+          <p>This parses a video into spatio-temporal volumes - “objects”</p>
+          
+          <video src="" height="50%" controls loop class="slideautostart"></video>
+          <p class="lcred">TODO A Video of Segmentation.</p>
+          
+          <div class="fragment">This means “objects” must form <span class="fragment highlight-green">continuous spatio-temporal</span> volumes!</div>
+          <div class='citation'>
+            <footl>
+              <footi>Abramov et al., <a href="http://dx.doi.org/10.1109/TCSVT.2012.2199389">Real-Time Segmentation of Stereo Videos on a Portable System With a Mobile GPU,</a> <em>IEEE Transactions on Circuits and Systems for Video Technology </em>2012.</footi>
+              <footi>Grundmann et al., <a href="http://www.cc.gatech.edu/cpl/projects/videosegmentation/cvpr2010_videosegmentation.pdf">Efficient Hierarchical Graph Based Video Segmentation,</a><em>Computer Vision and Pattern Recognition (CVPR)</em> 2010.</footi>
+            </footl>
+          </div>
+        </section>
         
+        <section>
+          <h2>Parsing Video Streams -<br> Existing Methodologies</h2>
+          <p><strong>Semantic Event Chains</strong><cite></cite> - Represents by analyzing creation & deletion of edges in segment adjacency graph.</p>
+
+          <p>Analysis of temporal evolution of graph structure yields semantics</p>
+          <video src="" height="50%" controls loop class="slideautostart"></video>
+          <p class="lcred">TODO A Video of Graph Evolution.</p>
+          <div class="fragment">This requires  <span class="fragment highlight-green">a-priori knowledge</span> of objects!</div>
+          <div class='citation'>
+            <footl>
+              <footi>Aksoy, Eren Erdal, et al. <a href="http://www.dpi.physik.uni-goettingen.de/~eaksoye/papers/IJRR_2011.pdf">Learning the semantics of object–action relations by observation.</a> <em>The International Journal of Robotics Research</em> (2011).</footi>
+            </footl>
+          </div>
+        </section>
+        
+        <!-- MOVING TO 3D -->
+        <section style="line-height: 135%">
+          <h2>Transitioning to 3D</h2>
+          <p>To Summarize most vexing issues </p>
+          <ul>
+            <li class="fragment">Segment into spatio-temporal volumes - <span class="fragment current-visible">cannot handle occlusions</span></li>
+            <li class="fragment">Divide the scene into objects <em><span class="fragment highlight-green">before</span></em> observations.</li>
+            <ul style="list-style-type: none"><li class="fragment">Cannot learn “object-ness” from observations</li></ul>
+            <li class="fragment"> Only use color - 3D geometry is not considered </li>
+          </ul>
+          <p class="fragment">To overcome some of these, we use RGB-D sensors to capture Point Clouds</p>
+          <div class="ctr w70">
+          <figure class="embed hide-smooth dark" >
+            <img src="data/openni_cams.jpg">
+            <figcaption style="font-size:0.75em">
+              Some OpenNI Sensors which capture RGB+D data.
+            </figcaption>
+          </figure>
+          </div>
+          <p class="rcred"><a href="http://www.pointclouds.org/">Point Cloud Library (PCL)</a></p>
+        </section>  
+        
+        <section>
+          <h2>A Point Cloud</h2>
+          <div align="center">
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            </iframe>
+          </div>
+          <p>Advantages of 3D</p>
+          <ul>
+            <li class="fragment"> TODO Something. </li>
+            <li class="fragment"> TODO Something. </li>
+            <li class="fragment"> TODO Something. </li>
+          </ul>
+        </section>
+        
+        <!-- SUPERVOXELS -->
         <section>
           <h2>Octree Voxelization</h2>
           <div class="w45" style="float: right">
@@ -94,8 +163,12 @@
               <li class="fragment">Region growing and connectivity graph become very efficient</li>
             </ul>
           <div class="ctr w90">
-            <img src="assets/wp-Sun_poster.svg">
-            <p class="lcred"><a href="http://commons.wikimedia.org/wiki/File:Sun_poster.svg">Wikimedia Commons</a></p>
+            <figure class="embed hide-smooth dark" >
+              <img src="">
+              <figcaption style="font-size:1.0em">
+                TODO Adjacency Octree - Graph structure from point clouds.
+              </figcaption>
+            </figure>
           </div>
         </section>
         
@@ -105,16 +178,19 @@
             <img src="data/supervoxelwhite.svg" width="75%">
           </div>
           <ul>
-            <li class="fragment">VCCS is an oversegmentation technique that uses local geometry to respect object boundaries</li>
+            <li class="fragment">VCCS <cite></cite> is an oversegmentation technique that uses local geometry to respect object boundaries</li>
             <li class="fragment">Constrained to flow across voxel connections</li>
             <li class="fragment">Use color, normals, and a spatial smoothness constraint </li>
           </ul>
           <div class="ctr w100">
             <img src="data/Supervoxels4.svg" width="80%">
           </div>
-          <div class='footer'>
-               Papon et al. <em>Voxel Cloud Connectivity Segmentation - Supervoxels for Point Clouds</em>. CVPR, 2013
-           </div>
+
+           <div class='citation'>
+            <footl>
+              <footi>Papon et al., <a href="http://www.jeremiepapon.com/cvpr-2013-supervoxels/">Voxel Cloud Connectivity Segmentation - Supervoxels for Point Clouds,</a> Computer Vision and Pattern Recognition (CVPR) 2013.</footi>
+            </footl>
+          </div>
         </section>
   
         <section>
@@ -123,16 +199,150 @@
             <img src="data/IncreasingSeedSizePlain.svg" width="100%" >
             <p class="rcred"><a href="http://www.jeremiepapon.com/cvpr-2013-supervoxels/">Papon et al. CVPR 2013</a></p>
           </div>
-          <p> Example of Supervoxels with different seed sizes - from NYU Dataset * </p>
+          <p> Example of Supervoxels with different seed sizes - from NYU Dataset <cite></cite> </p>
           <p> Seeding size determines level of detail captured.</p>
-          <div class='footer'>
-              * Silberman et al., <em>Indoor Segmentation and Support Inference from RGBD Images,</em> ECCV 2012.
+          
+          <div class='citation'>
+            <footl>
+              <footi>Silberman et al., <a href="http://cs.nyu.edu/~silberman/projects/indoor_scene_seg_sup.html">Indoor Segmentation and Support Inference from RGBD Images,</a> European Conference on Computer Vision (ECCV) 2012.</footi>
+            </footl>
           </div>
         </section>
         
+        <section>
+          <h2>Supervoxels in a Point Cloud</h2>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+          </iframe>
+        </section>
         
+        <section>
+          <h2>Local Convexity Segmentation</h2>
+          <p>Can get a segmentation into parts by breaking graph edges using convexity.</p>
+          <div class="ctr w90">
+          <figure class="embed hide-smooth dark" >
+            <img src="">
+            <figcaption style="font-size:1.0em">
+              TODO Hierarchy - voxels to supervoxels to connected convex segments.
+            </figcaption>
+          </figure>
+          </div>
+        </section>
         
+        <section> 
+          <h2> Can segment huge full 3D scenes efficiently. </h2>
+          <p> TODO Add City Segmentation! XYZRGBL! </p>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            </iframe>
+        </section>
         
+        <!-- SEQUENTIAL POINT CLOUDS -->
+        <section>
+          <h2>Sequential Clouds & Occlusion Reasoning </h2>
+          <p> Occlusions appear as “shadows” in rendered point clouds. </p>
+          <video src="" height="50%" controls loop class="slideautostart"></video>
+          <p class="lcred">TODO Video of covering lemon without occlusion reasoning.</p>
+          <p> As new observations arrive, we can begin low-level reasoning about occlusion</p>
+        </section>
+        
+        <section>
+          <h2>Sequentially Updated Octree <cite></cite> </h2>
+          <p> If we assume no camera motion, we can reason about why voxels “disappear” </p>
+          <p> Check for occlusion by ray-tracing paths from voxel to camera</p>
+          <video src="" height="50%" controls loop class="slideautostart"></video>
+          <p class="lcred">TODO Video of covering lemon with occlusion reasoning.</p>
+          
+          <div class='citation'>
+            <footl>
+              <footi>Papon et al., <a href="http://www.jeremiepapon.com/iros-2013-video-segmentation/">Point Cloud Video Object Segmentation using a Persistent Supervoxel World-Model,</a> Intelligent Robots and Systems (IROS) 2013.</footi>
+            </footl>
+          </div>
+        </section>
+        
+        <!-- PARTICLE FILTERING -->
+        <section>
+          <h2>Particle filter tracking in Point Clouds</h2>
+          <p> Model Representation </p>
+        </section>
+        
+        <section>
+          <h2>Particle filter tracking in Point Clouds</h2>
+          <p> Correspondence Matching </p>
+        </section>
+        
+        <section>
+          <h2>Stratified Correspondence Sampling <cite></cite></h2>
+          
+          <div class='citation'>
+            <footl>
+              <footi>Papon et al., <a href="http://www.jeremiepapon.com/wacv-2015-tracking/">Spatially Stratified Correspondence Sampling for Real-Time Point Cloud Tracking,</a> Applications of Computer Vision (WACV), 2015.</footi>
+            </footl>
+          </div>
+        </section>
+        
+        <section>
+          <h2>Results on VR Data</h2>
+          <p> TODO Graph showing performance. </p>
+          
+        </section>
+        
+        <section>
+          <h2> Results on VR Data </h2>
+          <p> TODO Video Results on Tide Sequence </p>
+        </section>
+        
+        <!-- HIERARCHICAL SUPERVOXEL TRACKING -->
+        <section>
+          <h2> What was our purpose again? </h2>
+          <p class="fragment"> To understand a video like this! </p>
+          <p> TODO Show cutting video with model tracking - failure!</p>
+          <p class="fragment"> Unfortunately, this is all we have so far with our occlusion reasoning and particle filtering.</p>
+          <p class="fragment"> This can only be resolved by eliminating the a-priori object models.</p>
+          
+        </section>
+        
+        <section>
+          <h2> Tracking Supervoxels? </h2>
+          <p> We cannot track at the supervoxel level due to the “aperture problem” <cite></cite></p>
+          <embed src="data/flash/two-squares.swf" width="90%" height="80%"></embed>
+          <p class="rcred"><a href="http://web.mit.edu/persci/demos/Motion&Form/demos/download.html">MIT Perceptual Science Group</a></p>
+          <div class='citation'>
+            <footl>
+              <footi>McDermott, et al., <a href="http://web.mit.edu/jhm/www/Pubs/McDermott_Weiss_Adelson_2001_motion_form_beyond_junctions.pdf">Beyond junctions: Nonlocal form contraints on motion interpretation.</a> <em>Perception </em> 2001.</footi>
+            </footl>
+          </div>
+        </section>
+        
+        <section>
+          <h2> Hierarchical Temporal Supervoxels </h2>
+          <div class="ctr w90">
+          <figure class="embed hide-smooth dark" >
+            <img src="">
+            <figcaption style="font-size:1.0em">
+              TODO Big figure showing hierarchical update - white board!
+            </figcaption>
+          </figure>
+          </div>
+        </section>
+        
+        <section>
+          <h2> Hierarchical Temporal Supervoxels </h2>
+          <p> Human Manipulation Video </p>
+        </section>
+        
+        <section>
+          <h2> Hierarchical Temporal Supervoxels </h2>
+          <p> Cutting Video </p>
+        </section>
+        
+        <section>
+          <h2> Hierarchical Temporal Supervoxels </h2>
+          <p> Occlusion Manip 1 Video </p>
+        </section>
+        
+        <section>
+          <h2> Hierarchical Temporal Supervoxels </h2>
+          <p> Pan Video </p>
+        </section>
         
         <section>
           <h2>Summary</h2>
@@ -140,6 +350,13 @@
         
         <section>
           <h2>Outlook and Future Work</h2>
+        </section>
+        
+        <section>
+          <h2>Other Contributions</h2>
+          <p> Oculus vision GUI </p>
+          <p> All algorithms have been released as Open Source </p>
+          <p> 2D Tracking and Segmentation using Particle Filters </p>
         </section>
         
         <section>
@@ -158,6 +375,31 @@
             <br style="line-height:150%">
             <li><strong>Papon, J.</strong>; Abramov, A.; Aksoy, E.; Wörgötter, F., <a href="http://www.jeremiepapon.com/wacv-2012-oculus-system/">A modular system architecture for online parallel vision pipelines,</a> Applications of Computer Vision (WACV) 2012, Jan. 2012.</li>
           </ul>
+          <div style="width:40%; float:right">
+            <div style="width:30%; float:left">
+            <figure class="embed hide-smooth dark" >
+                  <img src="data/hogrefe.jpg" alt="Dieter Hogrefe">
+                  <figcaption style="font-size:0.5em">
+                      Dieter Hogrefe
+                  </figcaption>
+              </figure>
+            </div>
+            <div style="width:35%; float:right">
+              <figure class="embed hide-smooth dark" >
+                  <img src="data/worgotter.png" alt="Florentin Wörgötter">
+                  <figcaption style="font-size:0.5em">
+                      Florentin Wörgötter
+                  </figcaption>
+              </figure>
+            </div>
+          
+          <img src="data/point-cloud-library-logo.png">
+          </div>
+        </section>
+        
+        <section>
+          <img src="data/thesis_defense.png" height="90%">
+          <p class="rcred"><a href="http://xkcd.com/1403/">XKCD</a></p>
         </section>
         
         <section>
@@ -225,6 +467,8 @@
 
     <script>
       Reveal.initialize({
+        width: 1024,
+        height: 768,
         controls: false,
         progress: true,
         history: true,

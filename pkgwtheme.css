@@ -47,14 +47,19 @@
 
 body {
   background: #111111;
-  background-color: #111111; }
+  background-color: #111111; 
+  counter-reset: footnote_counter;  
+}
 
 .reveal {
   font-family: "Open Sans", sans-serif;
   font-size: 30px;
   font-weight: 200;
   letter-spacing: -0.02em;
-  color: #eeeeee; }
+  color: #eeeeee; 
+  counter-reset: citation_counter;
+  
+}
 
 .reveal .slides > section {
     /* Force every slide to be full height so that footers work */
@@ -169,14 +174,6 @@ body {
     margin-bottom: 18px;
 }
 
-.reveal citation {
-    text-align: left;
-    font-size: 60%;
-    position: absolute;
-    bottom: 1em;
-    width: 100%;
-}
-
 .reveal p {
     text-align: left;
 }
@@ -266,6 +263,35 @@ body {
     width: 100%;
     margin: 10px 0px;
 }
+
+.reveal .citation {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 0.6em;
+  text-align: left;
+}
+
+.reveal cite{ 
+  text-decoration: none;   
+  vertical-align: super;
+}
+
+.reveal cite:before { 
+  counter-increment: citation_counter; /* Add 1 to footnote */
+  content: "(" counter(citation_counter) ")";
+}
+
+.reveal footl {
+  list-style-type: none;
+}
+
+.reveal footl footi:before {
+  counter-increment: footnote_counter;
+  content: '(' counter(footnote_counter) ') ' ;
+}
+
+.reveal footl footi { display:block; }
 
 /* for debugging; note that the border offsets the layout slightly.
 .reveal .slides section.present {
