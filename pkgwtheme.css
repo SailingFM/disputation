@@ -1,6 +1,7 @@
 /* Custom reveal.js theme.
  *
- * Based off of the night/black theme, which is
+ * Based off of the theme of 
+ * , which is
  * copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 
@@ -168,6 +169,14 @@ body {
     margin-bottom: 18px;
 }
 
+.reveal citation {
+    text-align: left;
+    font-size: 60%;
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+}
+
 .reveal p {
     text-align: left;
 }
@@ -225,13 +234,15 @@ body {
 .reveal .w100 { width: 100%; }
 
 .reveal .footer {
-    text-align: center;
-    font-size: 80% !important;
-    position: absolute;
-    bottom: 1em;
-    width: 100%;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.5em;
 }
 
+
+
+    
 .reveal .bgcred {
     text-align: right;
     font-size: 60% !important;

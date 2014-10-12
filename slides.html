@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Magnetism in the Coolest, Smallest Stars</title>
-    <meta name="viewport"
-	  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Perceptual Segmentation of Visual Streams by Tracking of Objects and Parts</title>
+    <meta name="author" content="Jérémie Papon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="reveal/css/reveal.min.css">
     <link rel="stylesheet" href="pkgwtheme.css" id="theme">
     <link rel="stylesheet" href="reveal/lib/css/zenburn.css">
@@ -21,83 +21,170 @@
 
     <div class="reveal">
       <div class="slides">
-	<section>
-	  <p style="text-align: center"><br><br><br>Turn off the popup
-	  blocker before starting!</p>
-	  <p style="text-align: center">Open presenter console with <code>s</code>.</p>
-	</section>
-
-        <section data-background="assets/bd-aurora-impression_dwarfart.jpg">
-          <h1>Title</h1>
-          <p class="footer">Peter K. G. Williams ·
-	    <a href="https://twitter.com/pkgw">@pkgw</a> ·
-	    <a href="http://newton.cx/~peter/">http://newton.cx/~peter/</a><br>
-	    Bucknell University Physics Colloquium · 2013 Sep 19</p>
-	  <p class="bgcred">Hallinan et al., NRAO/AUI/NSF</p>
-
-	  <!-- I highlight my segue cues in red, but the elements in the <aside>
-	       get sucked into a separate window via some evil magic, so I can't
-	       easily define a CSS class that affects their styling. So I do it
-	       all manually here with style="color: red". -->
-	  <aside class="notes">
-	    <span style="color: red"></span> •
-	    • <span style="color: green"></span>
-	  </aside>
+        <section>
+          <p style="text-align: center"><br><br><br>Turn off the popup blocker before starting!</p>
+          <p style="text-align: center">Open presenter console with <code>s</code>.</p>
+          <p style="text-align: center">This really isn’t going to work if the assets haven't been downloaded!</p>
         </section>
 
-	<section>
-	  <h2>The solar magnetic field is generated deep within the Sun’s
-	  interior.</h2>
-	  <p><em>Dynamo</em>: converts mechanical to electromagnetic energy.</p>
-	  <div class="ctr w70">
-	    <img src="assets/wp-Sun_poster.svg">
-	    <p class="lcred"><a href="http://commons.wikimedia.org/wiki/File:Sun_poster.svg">Wikimedia Commons</a></p>
-	  </div>
-	  <p>Solar dynamo believed to be an “α–Ω” mechanism.</p>
+        
+        <section data-background="data/Buildings_Cropped_Merge.png">
+          <h1>Perceptual Segmentation of Visual Streams</h1>
+          <h3>by Tracking of Objects and Parts</h3>
+          <footer style="font-size: 36px">             
+          <a href="http://www.jeremiepapon.com/">Jérémie Papon</a><br>
+          Georg-August-Universität Göttingen <br>
+          Institut für Informatik <br>
+          Göttingen, 2014 Oct 17
+          </footer>
+          <br>
+          <p style="text-align: center"> Disputation for the award of the degree "Doctor of Philosophy" </p>
+          
+        </section>
 
-	  <aside class="notes">
-	    <span style="color: red"></span> •
-	    • <span style="color: green"></span>
-	  </aside>
-	</section>
-
-	<section>
-          <h2>Here are some takeaways.</h2>
-
-          <ul>
-            <li>This talk is amazing.</li>
-          </ul>
-
-          <p style="font-size: larger; text-align: center"><br>Thanks for
-            listening! Questions?</p>
-
-          <div style="position: absolute; bottom: 0px; font-size: smaller;">
-            <p><em>Me</em>: Peter K. G. Williams ·
-              <a href="https://twitter.com/pkgw">@pkgw</a> ·
-              <a href="http://newton.cx/~peter/">http://newton.cx/~peter/</a>
-            </p>
-
-            <p><em>Design credits</em>:
-              <a href="http://hakim.se/">Hakim El Hattab</a> (“night” theme),
-              <a href="https://twitter.com/julietulanovsky">Julieta Ulanovsky</a> (Montserrat font),
-              <a href="http://www.monotypeimaging.com/ProductsServices/TypeDesignerShowcase/SteveMatteson/">
-		Steve Matteson</a>
-            </p>
-
-            <p><em>Tech credits</em>:
-              <a href="http://git-scm.com/">git</a>,
-              <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>,
-              <a href="http://www.mathjax.org/">MathJax</a>,
-              <a href="http://mozilla.github.io/pdf.js/">pdf.js</a>,
-              <a href="https://developer.mozilla.org/">Firefox</a> developer tools.
-            </p>
-
-            <p style="font-size: smaller"><em>Acknowledgments</em>: we’d all
-              go nuts without ADS and CDS.</p>
+        <section>
+          <h2>How do we learn to perceive objects?</h2>
+          <blockquote>“Infants appear to perceive objects by analyzing three-dimensional surface arrangements and motions... [they] divide perceptual arrays into units that move as connected wholes, that move separately from one another, that tend to maintain their size and shape over motion, and that tend to act upon each other only on contact.” *</blockquote>
+          <div class="fragment">
+            <div class="w50" style="display: inline-block">
+            <p>There are multiple interacting elements essential to development:</p>
+              <ul>
+                <li class="fragment">Coherent motion at multiple levels</li>
+                <li class="fragment">Temporal continuity of size and shape</li>
+                <li class="fragment">Only interact with contact</li>
+              </ul>
+            </div>
+            <div class="w45" style="float: right">
+              <img src="data/child_colors.jpg">
+                
+            </div>
           </div>
-	</section>
-      </div>
-    </div>
+           <div class='footer'>
+              * Spelke, Elizabeth S. "Principles of object perception." Cognitive science 14, no. 1 (1990): 29-56.
+            </div>
+        </section>  
+        
+        <section>
+          <h2>Observations have no semantic meaning.</h2>
+          <p>How can we create meaningful spatial and temporal partitioning of discrete sensor observations?</p>
+          <video src="assets/sdo-plasma-rain-yt720.webm" width="100%" muted
+                 controls loop class="slideautostart"></video>
+          <p class="lcred">NASA Solar Dynamics Observatory AIA
+          — <a href="http://youtu.be/M4kT0xoCiPg">YouTube</a></p>
+        </section>
+
+        
+        <section>
+          <h2>Octree Voxelization</h2>
+          <div class="w45" style="float: right">
+            <img src="data/bunnywork.png">
+            <p class="rcred"><a href="http://www.pointclouds.org/">Point Cloud Library (PCL)</a></p>
+          </div>
+          <p>Insert pointcloud into a grid of cubic voxels.</p>
+          <p>Represent all points in one cell by its centroid.</p>
+          <p>$$\vec{ \overline{p}} = \frac{1}{N_i}\sum_i \vec p_i$$</p>
+          <p>The edge length $L_\text{voxel}$ of voxels defines scale of observation and determines octree minimum bin size.</p>
+        </section>
+        
+        <section>
+          <h2>Building an Adjacency Graph</h2>
+            <ul>
+              <li class="fragment">Special octree type developed which maintains adjacency information of voxels</li>
+              <li class="fragment">This gives us back pixel-like (grid) relations, while keeping real 3D adjacency</li>
+              <li class="fragment">Region growing and connectivity graph become very efficient</li>
+            </ul>
+          <div class="ctr w90">
+            <img src="assets/wp-Sun_poster.svg">
+            <p class="lcred"><a href="http://commons.wikimedia.org/wiki/File:Sun_poster.svg">Wikimedia Commons</a></p>
+          </div>
+        </section>
+        
+        <section>
+          <h2>Voxel Cloud Connectivity Segmentation</h2>
+          <div class="ctr w100">
+            <img src="data/supervoxelwhite.svg" width="75%">
+          </div>
+          <ul>
+            <li class="fragment">VCCS is an oversegmentation technique that uses local geometry to respect object boundaries</li>
+            <li class="fragment">Constrained to flow across voxel connections</li>
+            <li class="fragment">Use color, normals, and a spatial smoothness constraint </li>
+          </ul>
+          <div class="ctr w100">
+            <img src="data/Supervoxels4.svg" width="80%">
+          </div>
+          <div class='footer'>
+               Papon et al. <em>Voxel Cloud Connectivity Segmentation - Supervoxels for Point Clouds</em>. CVPR, 2013
+           </div>
+        </section>
+  
+        <section>
+          <h2>Examples of Supervoxels</h2>
+          <div class="ctr w100">
+            <img src="data/IncreasingSeedSizePlain.svg" width="100%" >
+            <p class="rcred"><a href="http://www.jeremiepapon.com/cvpr-2013-supervoxels/">Papon et al. CVPR 2013</a></p>
+          </div>
+          <p> Example of Supervoxels with different seed sizes - from NYU Dataset * </p>
+          <p> Seeding size determines level of detail captured.</p>
+          <div class='footer'>
+              * Silberman et al., <em>Indoor Segmentation and Support Inference from RGBD Images,</em> ECCV 2012.
+          </div>
+        </section>
+        
+        <section>
+          <h2>Slide Title</h2>
+          <div class="w45" style="float: right">
+            <img src="assets/berger-2009-f1_bursts.png">
+            <p class="lcred"><a href="http://dx.doi.org10.1088/0004-637X/695/1/310">Berger+
+            (2009)</a></p>
+          </div>
+          <p>Example text <em>with emphasis.</em></p>
+          <p>Some math follows</p>
+          <p>$$\nu_\textrm{cyc} = \frac{e B}{2 \pi m_e c}$$</p>
+           <div class='footer'>
+              * Spelke, Elizabeth S. "Principles of object perception." Cognitive science 14, no. 1 (1990): 29-56.
+           </div>
+        </section>
+        
+        <section>
+          <div align="center">
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="600" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;"></iframe>
+          </div>
+        </section>
+        
+        <section>
+          <h2>Full Width image slide</h2>
+          <p><em>Dynamo</em>: converts mechanical to electromagnetic energy.</p>
+          <div class="ctr w90">
+            <img src="assets/wp-Sun_poster.svg">
+            <p class="lcred"><a href="http://commons.wikimedia.org/wiki/File:Sun_poster.svg">Wikimedia Commons</a></p>
+          </div>
+          <p>Solar dynamo believed to be an “α–Ω” mechanism.</p>
+        </section>
+
+        <section>
+          <h2>Video Slide</h2>
+          <p>Some text about a video</p>
+          <div class="ctr w80">
+            <video src="assets/soho-C2_Apr01.webm" width="100%" muted loop controls></video>
+            <p class="lcred">NASA <a href="http://sohowww.nascom.nasa.gov/gallery/Movies/flares.html">Solar and Heliospheric Observatory</a></p>
+          </div>
+        </section>
+
+       
+        <section>
+          <h2> Dual Column Image slide</h2>
+          <p>Some text.</p>
+          <br>
+          <div class="w45" style="display: inline-block; height: 360px; margin-right: 5px;">
+            <img src="assets/728501main_themis-magnetosphere.jpg">
+            <p class="lcred">NASA / Goddard Space Flight Center</p>
+          </div>
+          <div class="w45" style="display: inline-block; height: 360px; margin-left: 5px;">
+            <video src="assets/nasa-earth-recut-yt360.webm" muted controls></video>
+            <p class="lcred">NASA — <a href="http://youtu.be/lxWBlJ1kB7Q">YouTube</a></p>
+          </div>
+          <p class="fragment highlight-green"> This text will get highlighted!</p>
+        </section>
 
     <!-- End of slides. -->
 
@@ -109,18 +196,14 @@
     <script>
       Reveal.initialize({
         controls: false,
-        progress: false,
+        progress: true,
         history: true,
-        center: false,
+        center: true,
         keyboard: true,
-        touch: false,
         overview: true,
-        mouseWheel: false,
-        width: 960,
-        height: 720,
 
-        theme: false, // hardcoded with CSS import in <head>
-        transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // none/fade/slide/convex/concave/zoom
         transitionSpeed: 'default', // default/fast/slow
 
         math: {
@@ -130,19 +213,25 @@
 
         dependencies: [
           { src: 'reveal/lib/js/classList.js',
-	    condition: function() { return !document.body.classList; }},
+            condition: function() { return !document.body.classList; }},
           { src: 'reveal/plugin/markdown/marked.js',
-	    condition: function() { return !!document.querySelector ('[data-markdown]'); }},
+            condition: function() { return !!document.querySelector ('[data-markdown]'); }},
           { src: 'reveal/plugin/markdown/markdown.js',
-	    condition: function() { return !!document.querySelector ('[data-markdown]'); }},
+            condition: function() { return !!document.querySelector ('[data-markdown]'); }},
           { src: 'reveal/plugin/highlight/highlight.js', async: true,
-	    callback: function() { hljs.initHighlightingOnLoad (); }},
+            callback: function() { hljs.initHighlightingOnLoad (); }},
           { src: 'reveal/plugin/notes/notes.js', async: true,
-	    condition: function() { return !!document.body.classList; }},
+            condition: function() { return !!document.body.classList; }},
           { src: 'mymath.js', async: true },
-	  { src: 'pdfimgs.js', async: true },
-	  { src: 'slideautostart.js', async: true },
+          { src: 'pdfimgs.js', async: true },
+          { src: 'slideautostart.js', async: true },
         ],
+      });
+
+      // Only load SDO Data page if we go to that slide
+      Reveal.addEventListener ('sdodataslide', function () {
+        console.log('sdodataslide');
+        document.querySelector ('#sdoiframe').src = 'http://sdo.gsfc.nasa.gov/data/'
       });
     </script>
   </body>
