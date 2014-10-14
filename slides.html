@@ -19,6 +19,9 @@
 
   <body>
     <div class="reveal">
+      <resetfootnotecounter></resetfootnotecounter>
+      <resetcitationcounter></resetcitationcounter>
+
       <div class="slides">
         <section>
           <p style="text-align: center"><br><br><br>Turn off the popup blocker before starting!</p>
@@ -230,9 +233,7 @@
         
         <section> 
           <h2> Can segment huge full 3D scenes efficiently. </h2>
-          <p> TODO Add City Segmentation! XYZRGBL! </p>
-          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
-            </iframe>
+          <video src="data/movies/city_loop_lores.mp4" height="100%" controls loop class="slideautostart"></video>
         </section>
         
         <!-- SEQUENTIAL POINT CLOUDS -->
@@ -303,7 +304,7 @@
         <section>
           <h2> Tracking Supervoxels? </h2>
           <p> We cannot track at the supervoxel level due to the “aperture problem” <cite></cite></p>
-          <embed src="data/flash/two-squares.swf" width="90%" height="80%"></embed>
+          <embed src="data/flash/twosquares.swf" width="90%" height="80%"></embed>
           <p class="rcred"><a href="http://web.mit.edu/persci/demos/Motion&Form/demos/download.html">MIT Perceptual Science Group</a></p>
           <div class='citation'>
             <footl>
@@ -313,7 +314,8 @@
         </section>
         
         <section>
-          <h2> Hierarchical Temporal Supervoxels </h2>
+          <h2> Hierarchical Temporal (super)Voxel Fields </h2>
+          <p> Imitate the feedback mechanisms of the visual cortex </p>
           <div class="ctr w90">
           <figure class="embed hide-smooth dark" >
             <img src="">
@@ -475,7 +477,7 @@
         center: true,
         keyboard: true,
         overview: true,
-
+        
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'default', // none/fade/slide/convex/concave/zoom
         transitionSpeed: 'default', // default/fast/slow
