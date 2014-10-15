@@ -15,6 +15,26 @@
     <!--[if lt IE 9]>
     <script src="reveal/lib/js/html5shiv.js"></script>
     <![endif]-->
+    
+    <!--Adobe Edge Runtime-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script type="text/javascript" charset="utf-8" src="edge_includes/edge.5.0.0.min.js"></script>
+    <style>
+        .edgeLoad-EDGE-5753503 { visibility:hidden; }
+    </style>
+    <!--Load HTVF animation -->
+    <script>
+      AdobeEdge.loadComposition('HTVF_anim', 'EDGE-5753503', {
+        scaleToFit: "none",
+        centerStage: "none",
+        minW: "0",
+        maxW: "undefined",
+        width: "1024px",
+        height: "625px"
+    }, {dom: [ ]}, {dom: [ ]});
+    </script>
+    <!--Adobe Edge Runtime End-->
+
   </head>
 
   <body>
@@ -69,9 +89,10 @@
         
         <section>
           <h2>Observations have no semantic meaning.</h2>
-          <p>How can we create meaningful spatial and temporal partitioning of discrete sensor observations?</p>
-          <video src="" width="100%" controls loop class="slideautostart"></video>
-          <p class="lcred">TODO A Video of Human Manipulation</p>
+          <p>How can we create spatial and temporal partitions of sensor observations?</p>
+          <video src="data/movies/cutting.mp4" width="80%" controls loop class="slideautostart"></video>
+          <p>How can we do this when we don't know what is an object before-hand?</p>
+          <p>Is it possible to make useful temporal connections at a low level?</p>
         </section>
 
         <!-- Existing Stuff -->
@@ -82,10 +103,10 @@
               Grundmann et al.<cite></cite></p>
           <p>This parses a video into spatio-temporal volumes - “objects”</p>
           
-          <video src="" height="50%" controls loop class="slideautostart"></video>
-          <p class="lcred">TODO A Video of Segmentation.</p>
+          <video src="data/movies/grundmann/cutting_grund03.mp4" height="60%" controls loop class="slideautostart"></video>
+          <p class="rcred"><a href="http://www.videosegmentation.com/">Processed on VideoSegmentation.com</a></p>
           
-          <div class="fragment">This means “objects” must form <span class="fragment highlight-green">continuous spatio-temporal</span> volumes!</div>
+
           <div class='citation'>
             <footl>
               <footi>Abramov et al., <a href="http://dx.doi.org/10.1109/TCSVT.2012.2199389">Real-Time Segmentation of Stereo Videos on a Portable System With a Mobile GPU,</a> <em>IEEE Transactions on Circuits and Systems for Video Technology </em>2012.</footi>
@@ -94,13 +115,21 @@
           </div>
         </section>
         
+         <section>
+          <h2>Parsing Video Streams -<br> Existing Methodologies</h2>
+          <p>Core assumption means that “objects” must form <span class="fragment highlight-green">continuous spatio-temporal</span> volumes!</p>
+          <video src="data/movies/grundmann/occlusion_grund03_append.mp4" height="70%" controls loop class="slideautostart"></video>
+          <p class="rcred"><a href="http://www.videosegmentation.com/">Processed on VideoSegmentation.com</a></p>
+          <div class="fragment">Complete failure if this assumption is violated. </div>
+        </section>
+        
         <section>
           <h2>Parsing Video Streams -<br> Existing Methodologies</h2>
           <p><strong>Semantic Event Chains</strong><cite></cite> - Represents by analyzing creation & deletion of edges in segment adjacency graph.</p>
 
           <p>Analysis of temporal evolution of graph structure yields semantics</p>
-          <video src="" height="50%" controls loop class="slideautostart"></video>
-          <p class="lcred">TODO A Video of Graph Evolution.</p>
+          <video src="data/movies/eren/maniac_breakfast.mp4" height="60%" controls loop class="slideautostart"></video>
+          <p class="rcred"><a href="https://www.youtube.com/watch?v=Gt5TVEcSTTE">Maniac Dataset: Breakfast</a></p>
           <div class="fragment">This requires  <span class="fragment highlight-green">a-priori knowledge</span> of objects!</div>
           <div class='citation'>
             <footl>
@@ -134,14 +163,14 @@
         <section>
           <h2>A Point Cloud</h2>
           <div align="center">
-            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
             </iframe>
           </div>
           <p>Advantages of 3D</p>
           <ul>
-            <li class="fragment"> TODO Something. </li>
-            <li class="fragment"> TODO Something. </li>
-            <li class="fragment"> TODO Something. </li>
+            <li class="fragment"> Avoids size/shape ambiguities of perspective transformation </li>
+            <li class="fragment"> Can reason about occlusions at a low level </li>
+            <li class="fragment"> TODO another advantage?  </li>
           </ul>
         </section>
         
@@ -156,6 +185,12 @@
           <p>Represent all points in one cell by its centroid.</p>
           <p>$$\vec{ \overline{p}} = \frac{1}{N_i}\sum_i \vec p_i$$</p>
           <p>The edge length $L_\text{voxel}$ of voxels defines scale of observation and determines octree minimum bin size.</p>
+        </section>
+        
+        <section>
+          <h2>A Voxelized Point Cloud</h2>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud_voxel_trans.pcd" width="800" height="600" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="">
+          </iframe>
         </section>
         
         <section>
@@ -214,7 +249,7 @@
         
         <section>
           <h2>Supervoxels in a Point Cloud</h2>
-          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud_supervoxels.pcd" width="800" height="600" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="">
           </iframe>
         </section>
         
@@ -230,6 +265,12 @@
           </figure>
           </div>
         </section>
+               
+        <section>
+          <h2>LCCP Segments in a Point Cloud</h2>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud_lccp.pcd" width="800" height="600" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="">
+          </iframe>
+        </section>
         
         <section> 
           <h2> Can segment huge full 3D scenes efficiently. </h2>
@@ -240,9 +281,16 @@
         <section>
           <h2>Sequential Clouds & Occlusion Reasoning </h2>
           <p> Occlusions appear as “shadows” in rendered point clouds. </p>
-          <video src="" height="50%" controls loop class="slideautostart"></video>
-          <p class="lcred">TODO Video of covering lemon without occlusion reasoning.</p>
-          <p> As new observations arrive, we can begin low-level reasoning about occlusion</p>
+          <video src="data/movies/occlusion_demo.mp4" height="50%" controls loop class="slideautostart"></video>
+          <p> These blank areas limit our ability to have temporal continuity - object permanence.</p>
+        </section>
+        
+        <section>
+          <h2> Pointcloud <em>without</em> Occlusion Reasoning </h2>
+          <p> For instance, here the lemon (which we want to keep track of) and much of the table is hidden by the bowl.</p>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_without.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+          </iframe>
+          <p>Fortunately, we can perform some <span class="fragment highlight-green">low-level reasoning</span> about occlusions.</p>
         </section>
         
         <section>
@@ -257,6 +305,19 @@
               <footi>Papon et al., <a href="http://www.jeremiepapon.com/iros-2013-video-segmentation/">Point Cloud Video Object Segmentation using a Persistent Supervoxel World-Model,</a> Intelligent Robots and Systems (IROS) 2013.</footi>
             </footl>
           </div>
+        </section>
+        
+        <section>
+          <h2> Demonstration of Occlusion Reasoning </h2>
+          <p> Left frame shows input data without occlusion reasoning </p>
+          <video src="data/movies/occlusion_comparison.mp4" width="100%" controls loop class="slideautostart"></video>
+          <p> Right shows the same input with ray-tracing checks </p>
+        </section>
+        
+        <section>
+          <h2> Pointcloud <em>with</em> Occlusion Reasoning </h2>
+          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_with.pcd" width="800" height="500" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+          </iframe>
         </section>
         
         <!-- PARTICLE FILTERING -->
@@ -303,7 +364,7 @@
         
         <section>
           <h2> Tracking Supervoxels? </h2>
-          <p> We cannot track at the supervoxel level due to the “aperture problem” <cite></cite></p>
+          <p> Cannot track exclusively at low-level due to the “aperture problem” <cite></cite></p>
           <embed src="data/flash/twosquares.swf" width="90%" height="80%"></embed>
           <p class="rcred"><a href="http://web.mit.edu/persci/demos/Motion&Form/demos/download.html">MIT Perceptual Science Group</a></p>
           <div class='citation'>
@@ -314,46 +375,113 @@
         </section>
         
         <section>
-          <h2> Hierarchical Temporal (super)Voxel Fields </h2>
-          <p> Imitate the feedback mechanisms of the visual cortex </p>
-          <div class="ctr w100">
-            <img src="data/HierarchicalVoxelFields5.svg" width="100%">
-          </div>
+          <h2>Visual Cortical Hierarchy</h2>
         </section>
         
         <section>
-          <h2> Hierarchical Temporal Supervoxels </h2>
-          <p> Human Manipulation Video </p>
+          <h2> Hierarchical Temporal (super)Voxel Fields (HTVF) </h2>
+          <div id="Stage" class="EDGE-5753503"></div>
+        </section>
+
+        <section>
+          <section>
+            <h2> HTVF - Cutting Video 0</h2>
+            <video src="data/movies/cutting_render_result.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> HTVF - Cutting Video 1</h2>
+            <video src="data/movies/cutting_input_result.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
         </section>
         
         <section>
-          <h2> Hierarchical Temporal Supervoxels </h2>
-          <p> Cutting Video </p>
+          <h2> HTVF - Occlusions - Without Voxel Raytracing </h2>
+          <video src="data/movies/occlusion1_none_input_result.mp4" height="100%" controls loop class="slideautostart"></video>
         </section>
         
         <section>
-          <h2> Hierarchical Temporal Supervoxels </h2>
-          <p> Occlusion Manip 1 Video </p>
+          <section>
+            <h2> HTVF - Occlusions - With Voxel Raytracing 0 </h2>
+            <video src="data/movies/occlusion_manip1_input_result.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> HTVF - Occlusions - With Voxel Raytracing 1 </h2>
+            <video src="data/movies/occlusion_manip1_other2_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> HTVF - Occlusions - With Voxel Raytracing 2 </h2>
+            <video src="data/movies/occlusion_manip1_other_input_rendering.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> HTVF - Occlusions - With Voxel Raytracing 3 </h2>
+            <video src="data/movies/occlusion_manip1_other_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> Occlusions - Just Occlusion Filling </h2>
+            <video src="data/movies/occlusion_manip1_other_input_centroids.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
         </section>
         
         <section>
-          <h2> Hierarchical Temporal Supervoxels </h2>
-          <p> Pan Video </p>
+          <section>
+            <h2> HTVF - Camera Pan 0 </h2>
+            <video src="data/movies/pan0_4_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          
+          <section>
+            <h2> HTVF - Camera Pan 2 - LCCP Overlay</h2>
+            <video src="data/movies/pan2_4_rendering_result.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
+          <section>
+          
+            <h2> HTVF - Camera Pan 1</h2>
+            <video src="data/movies/pan1_4_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
+          </section>
         </section>
         
         <section>
           <h2>Summary</h2>
+          <div style="font-size: 110%; line-height: 145%">
+            <p>We have presented a novel pipeline for creating spatio-temporal connections in point cloud video </p>
+            <p class="fragment"> Importantly, our method:</p>
+            <ul>
+              <li class="fragment">Can handle occlusions - labels persist </li>
+              <li class="fragment">Does not make a-priori assumptions about objects</li>
+              <li class="fragment">Handles rapid movement of people/cameras</li>
+              <li class="fragment">Provides stable temporal-supervoxels that can be used for learning</li>
+              <li class="fragment">TODO Anything else?</li>
+            </ul>
+          </div>
         </section>
         
         <section>
           <h2>Outlook and Future Work</h2>
-        </section>
-        
-        <section>
-          <h2>Other Contributions</h2>
-          <p> Oculus vision GUI </p>
-          <p> All algorithms have been released as Open Source </p>
-          <p> 2D Tracking and Segmentation using Particle Filters </p>
+          <div style="font-size: 110%; line-height: 145%">
+            <p> Many opportunities exist now that we have low-level temporal connections </p>
+            <ul> 
+              <li class="fragment">Apply hierarchal approach to occlusion reasoning</li>
+              <li class="fragment">Bootstrap learning - learn “objectness” from observations</li>
+              <li class="fragment">Higher levels in the hierarchy - sensor pose reasoning </li>
+              <li class="fragment">Dynamic level of detail & attention</li>
+                <ul class="fragment" style="list-style-type: none">
+                  <li>Less samples on large uniform surfaces </li>
+                  <li>More samples on small irregular areas </li>
+                </ul>
+            </ul>
+          </div>
+          <div class="fragment">
+          <p>Other Contributions</p>
+          <ul>
+            <li> Oculus vision GUI </li>
+            <li> All algorithms have been released as Open Source </li>
+            <li> 2D Tracking and Segmentation using Particle Filters </li>
+          </ul>
+          </div>
         </section>
         
         <section>
@@ -399,61 +527,7 @@
           <p class="rcred"><a href="http://xkcd.com/1403/">XKCD</a></p>
         </section>
         
-        <section>
-          <h2>Left Column Text Right Column Image</h2>
-          <div class="w45" style="float: right">
-            <img src="assets/berger-2009-f1_bursts.png">
-            <p class="lcred"><a href="http://dx.doi.org10.1088/0004-637X/695/1/310">Berger+
-            (2009)</a></p>
-          </div>
-          <p>Example text <em>with emphasis.</em></p>
-          <p>Some math follows</p>
-          <p>$$\nu_\textrm{cyc} = \frac{e B}{2 \pi m_e c}$$</p>
-           <div class='footer'>
-              * Spelke, Elizabeth S. "Principles of object perception." Cognitive science 14, no. 1 (1990): 29-56.
-           </div>
-        </section>
         
-        <section>
-          <h2>Point Cloud Viewer Slide</h2>
-          <div align="center">
-            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://www.jeremiepapon.com/wp_skeleton/content/uploads/centroids_000050.pcd" width="800" height="600" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;"></iframe>
-          </div>
-        </section>
-        
-        <section>
-          <h2>Full Width image slide</h2>
-          <p><em>Dynamo</em>: converts mechanical to electromagnetic energy.</p>
-          <div class="ctr w90">
-            <img src="assets/wp-Sun_poster.svg">
-            <p class="lcred"><a href="http://commons.wikimedia.org/wiki/File:Sun_poster.svg">Wikimedia Commons</a></p>
-          </div>
-          <p>Solar dynamo believed to be an “α–Ω” mechanism.</p>
-        </section>
-
-        <section>
-          <h2>Video Slide</h2>
-          <p>Some text about a video</p>
-          <div class="ctr w80">
-            <video src="assets/soho-C2_Apr01.webm" width="100%" muted loop controls></video>
-            <p class="lcred">NASA <a href="http://sohowww.nascom.nasa.gov/gallery/Movies/flares.html">Solar and Heliospheric Observatory</a></p>
-          </div>
-        </section>
-
-        <section>
-          <h2> Dual Column Image slide</h2>
-          <p>Some text.</p>
-          <br>
-          <div class="w45" style="display: inline-block; height: 360px; margin-right: 5px;">
-            <img src="assets/728501main_themis-magnetosphere.jpg">
-            <p class="lcred">NASA / Goddard Space Flight Center</p>
-          </div>
-          <div class="w45" style="display: inline-block; height: 360px; margin-left: 5px;">
-            <video src="assets/nasa-earth-recut-yt360.webm" muted controls></video>
-            <p class="lcred">NASA — <a href="http://youtu.be/lxWBlJ1kB7Q">YouTube</a></p>
-          </div>
-          <p class="fragment highlight-green"> This text will get highlighted!</p>
-        </section>
 
     <!-- End of slides. -->
 
@@ -466,7 +540,7 @@
       Reveal.initialize({
         width: 1024,
         height: 768,
-        controls: false,
+        controls: true,
         progress: true,
         history: true,
         center: true,
