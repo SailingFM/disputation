@@ -330,7 +330,7 @@
         <!-- PARTICLE FILTERING -->
         <section>
           <h2>Particle filter tracking in Point Clouds</h2>
-          <br><br>
+          <p> Correspondence-Based Particle Filter approach is used. </p>
           <figure class="embed hide-smooth dark" >
               <div style="width:100%">
                   <img src="data/TideModelSV.svg">
@@ -339,11 +339,52 @@
                   </figcaption>
               </div>
             </figure>
+            <p>$$\mathit{p}(\mathbf{x}_t|\mathbf{z}_{t-1}) =  \int{ \mathit{p}(\mathbf{x}_t|\mathbf{x}_{t-1})\mathit{p}(\mathbf{x}_{t-1}|\mathbf{z}_{t-1}) \mathit{d}\mathbf{x}_{t-1}}. $$</p>
+            <p>Dynamic Model:</p>
+            <p>$$\mathbf{x}_t = \mathbf{x}_{t-1} + \mathit{T}\mathbf{v}_{t-1} + \mathbf{\omega}$$</p>
+            <p>$$\mathbf{v}_t = \frac{1}{\mathit{T}N} \sum_{j=1}^{N} w_j (\mathbf{x}^j_{t} - \mathbf{x}^j_{t-1})$$</p>
         </section>
         
         <section>
           <h2>Particle filter tracking in Point Clouds</h2>
-          <p> Correspondence Matching </p>
+          <p> TODO: FLOW CHART SHOWING HOW CORRESPONDENCE PARTICLE FILTER WORKS?!?</p>
+          <p> Measurement Model: </p>
+          <p style="font-size: 70%">$$\mathbf{B}^j = 
+              \begin{bmatrix}
+                  \cos{\alpha}\cos{\beta} & \cos{\alpha}\sin{\beta}\sin{\gamma} - \sin{\alpha}\cos{\gamma} & \cos{\alpha}\sin{\beta}\cos{\gamma} + \sin{\alpha}\sin{\gamma}  & d_x \\ 
+                  \sin{\alpha}\cos{\beta} & \sin{\alpha}\sin{\beta}\sin{\gamma} + \cos{\alpha}\cos{\gamma} & \sin{\alpha}\sin{\beta}\cos{\gamma} - \cos{\alpha}\sin{\gamma}  & d_y \\ 
+                  -\sin{\beta} & \cos{\beta}\sin{\gamma} & \cos{\beta}\cos{\gamma} & d_z \\ 
+                    0 & 0 & 0 & 1
+              \end{bmatrix}$$</p>
+          <p style="font-size: 70%">$$ \begin{bmatrix}
+                                          \mathbf{p}^j_1 \\
+                                          \mathbf{p}^j_2 \\
+                                          \vdots \\
+                                          \mathbf{p}^j_\eta
+                                        \end{bmatrix}
+                                        \begin{bmatrix}
+                                          [x_1,y_1,z_1,1]^\mathsf{T} \\
+                                          [x_2,y_2,z_2,1]^\mathsf{T} \\
+                                          \vdots    \\
+                                          [x_\eta,y_\eta,z_\eta,1]^\mathsf{T}
+                                        \end{bmatrix}
+                                        =
+                                        \begin{bmatrix} 
+                                          \mathbf{B}^j & 0 & \ldots & 0 \\
+                                          0 & \mathbf{B}^j & \ldots &  0 \\
+                                          \vdots & \vdots & \ddots & \vdots \\
+                                          0 & 0 & \ldots & \mathbf{B}^j 
+                                        \end{bmatrix} 
+                                        \begin{bmatrix}
+                                          [x^m_1,y^m_1,z^m_1,1]^\mathsf{T} \\
+                                          [x^m_2,y^m_2,z^m_2,1]^\mathsf{T} \\
+                                          \vdots    \\
+                                          [x^m_\eta,y^m_\eta,z^m_\eta,1]^\mathsf{T}
+                                        \end{bmatrix}.$$</p>    
+                                        
+            <p style="font-size: 70%">$$\tilde{w}^j = \sum_{1}^{\eta} \frac{1}{1 + \frac {\mu \lVert \mathbf{p}^j_{xyz} - \mathbf{p}^*_{xyz} \rVert} {R_{voxel}} +  \frac{\lambda D_c(p^j_{RGB},p^*_{RGB})}{m} +   \epsilon \lVert \mathbf{p}^j_{n_x n_y n_z} - \mathbf{p}^*_{n_x n_y n_z} \rVert}$$</p>  
+            <p style="font-size: 70%">$$\mathbf{x}_t = \sum_{j=1}^{N} w_j \mathbf{x}^j_{t}$$</p>       
+              
         </section>
         
         <section>
