@@ -20,11 +20,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <script type="text/javascript" charset="utf-8" src="edge_includes/edge.5.0.0.min.js"></script>
     <style>
-        .edgeLoad-EDGE-5753503 { visibility:hidden; }
+        .edgeLoad-EDGE-3489513 { visibility:hidden; }
     </style>
     <!--Load HTVF animation -->
     <script>
-      AdobeEdge.loadComposition('HTVF_anim', 'EDGE-5753503', {
+      AdobeEdge.loadComposition('HTVF_anim2', 'EDGE-3489513', {
         scaleToFit: "none",
         centerStage: "none",
         minW: "0",
@@ -254,17 +254,24 @@
         </section>
         
         <section>
-          <h2>Local Convexity Segmentation</h2>
-          <p>Can get a segmentation into parts by breaking graph edges using convexity.</p>
-          <div class="ctr w90">
-          <figure class="embed hide-smooth dark" >
-            <img src="">
+          <h2>Local Convexity Segmentation (LCCP)<cite></cite></h2>
+          <p>Use a local convexity criterion on adjacency graph edges to split graph.</p> <br>
+          <div class="ctr w100">
+          <figure class="embed reveal-smooth dark" >
+            <img src="data/algorithmic_flow.svg">
             <figcaption style="font-size:1.0em">
-              TODO Hierarchy - voxels to supervoxels to connected convex segments.
+              Flow of segmentation: voxels to supervoxels to local convex patches.
             </figcaption>
           </figure>
           </div>
+          <div class='citation'>
+            <footl>
+              <footi>Stein, S.; Schoeler, M.; <strong>Papon, J.</strong>;  Wörgötter, F., <a href="http://www.jeremiepapon.com/cvpr-2014-segmentation/">Object Partitioning using Local Convexity,</a> Computer Vision and Pattern Recognition (CVPR) 2014, June 2014.</footi>
+            </footl>
+          </div>
         </section>
+               
+               
                
         <section>
           <h2>LCCP Segments in a Point Cloud</h2>
@@ -323,7 +330,15 @@
         <!-- PARTICLE FILTERING -->
         <section>
           <h2>Particle filter tracking in Point Clouds</h2>
-          <p> Model Representation </p>
+          <br><br>
+          <figure class="embed hide-smooth dark" >
+              <div style="width:100%">
+                  <img src="data/TideModelSV.svg">
+                  <figcaption style="font-size:1.0em">
+                    Models used for tracking are point clouds, partitioned using supervoxels into strata for sampling.
+                  </figcaption>
+              </div>
+            </figure>
         </section>
         
         <section>
@@ -333,6 +348,14 @@
         
         <section>
           <h2>Stratified Correspondence Sampling <cite></cite></h2>
+          <figure class="embed hide-smooth dark" >
+              <div style="width:100%">
+                  <img src="data/StratifiedCorrespondences.svg">
+                  <figcaption style="font-size:1.0em">
+                    Supervoxels are used to choose spatial strata for uniform random sampling.  
+                  </figcaption>
+              </div>
+            </figure>
           
           <div class='citation'>
             <footl>
@@ -342,8 +365,24 @@
         </section>
         
         <section>
-          <h2> Results on VR Data </h2>
-          <p> TODO Video Results on Tide Sequence </p>
+          <section>
+            <h2> Results on Synthetic Benchmark <cite></cite>  0 </h2>
+            <div align="center">
+              <video src="data/movies/tide.mp4" height="100%" controls loop class="slideautostart"></video>
+            </div>
+            <br>
+            <div class='citation'>
+              <footl>
+                <footi>Choi and Christensen,<a href="http://www.cc.gatech.edu/~cchoi/rgbd_obj_tracking.html" “RGB-D> Object Tracking: A Particle Filter Approach on GPU,</a> International Conference on Intelligent Robots and Systems (IROS), 2013.
+                </footi>
+              </footl>
+            </div>
+          </section>
+          <section>
+            <h2> Results in Real Application 1 </h2>
+            <video src="data/movies/humandemo.mp4" height="100%" controls loop class="slideautostart"></video>
+             <p class="rcred"><a href="http://www.intellact.eu/">IntellAct Project</a></p>
+          </section>
         </section>
         
         <section>
@@ -401,7 +440,7 @@
         
         <section>
           <h2> Hierarchical Temporal (super)Voxel Fields (HTVF) </h2>
-          <div id="Stage" class="EDGE-5753503"></div>
+          <div id="Stage" class="EDGE-3489513"></div>
         </section>
 
         <section>
@@ -530,6 +569,16 @@
                   </figcaption>
               </figure>
             </div>
+             
+            <div style="width:35%; float:right">
+              <figure class="embed hide-smooth dark" >
+                  <img src="data/piater.jpg" alt="Justus Piater">
+                  <figcaption style="font-size:0.5em">
+                      Justus Piater
+                  </figcaption>
+              </figure>
+            </div>
+            
             <div style="width:35%; float:right">
               <figure class="embed hide-smooth dark" >
                   <img src="data/worgotter.png" alt="Florentin Wörgötter">
@@ -538,6 +587,7 @@
                   </figcaption>
               </figure>
             </div>
+          
           
           <img src="data/point-cloud-library-logo.png">
           </div>
