@@ -109,7 +109,7 @@
             <p>Core assumption means that “objects” must form <span class="fragment highlight-green">continuous spatio-temporal</span> volumes!</p>
             <video src="data/movies/grundmann/occlusion_grund03_append.mp4" height="60%" controls loop class="slideautostart"></video>
             <p class="rcred"><a href="http://www.videosegmentation.com/">Processed on VideoSegmentation.com</a></p>
-            <br><br>
+            <br>
             <div class='citation'>
               <footl>
                 <footi>Abramov et al., <a href="http://dx.doi.org/10.1109/TCSVT.2012.2199389">Real-Time Segmentation of Stereo Videos on a Portable System With a Mobile GPU,</a> <em>IEEE Transactions on Circuits and Systems for Video Technology </em>2012.</footi>
@@ -178,14 +178,14 @@
         <section>
           <h2>A Point Cloud</h2>
           <div align="center">
-            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud.pcd&psize=3" width="1100" height="750" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/cutting_demo_cloud.pcd&psize=3" width="1100" height="650" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
             </iframe>
           </div>
           <p>Advantages of 3D</p>
           <ul>
-            <li class="fragment"> Avoids size/shape ambiguities of perspective transformation. </li>
-            <li class="fragment"> Can reason about occlusions at a low level. </li>
-            <li class="fragment"> Can use size and shape as a feature. </li>
+            <li> Avoids size/shape ambiguities of perspective transformation. </li>
+            <li> Can reason about occlusions at a low level. </li>
+            <li> Can use size and shape as a feature. </li>
           </ul>
         </section>
         
@@ -233,7 +233,7 @@
             <li class="fragment">Constrained to flow across voxel connections</li>
             <li class="fragment">Use color, normals, and a spatial smoothness constraint </li>
           </ul>
-
+        
           <div style="width:50%; float:left">
             <figure class="embed hide-smooth dark" >
               <img src="data/test55.png"">
@@ -252,7 +252,7 @@
             </figure>
           <div>
           <p class="rcred"><a href="http://users.acin.tuwien.ac.at/arichtsfeld/?site=4">OSD Dataset</a> <a href="http://www.pointclouds.org/blog/tocs/alexandrov/index.php">Sergey Alexandrov</a></p>
-          
+          <br>
           <div class='citation'>
             <footl>
               <footi>Papon et al., <a href="http://www.jeremiepapon.com/cvpr-2013-supervoxels/">Voxel Cloud Connectivity Segmentation - Supervoxels for Point Clouds,</a> Computer Vision and Pattern Recognition (CVPR) 2013.</footi>
@@ -268,7 +268,7 @@
                   <img src="data/IncreasingSeedSizePlain.svg" width="100%" >
                   <p class="rcred"><a href="http://www.jeremiepapon.com/cvpr-2013-supervoxels/">Papon et al. CVPR 2013</a></p>
                 </div>
-                <div class="ctr" style="width:80%">
+                <div class="ctr" style="width:75%">
                 <figure class="embed-top hide-smooth dark" >
                   <img src="data/VCCS_Performance.svg">
                   <figcaption style="font-size:1.0em">
@@ -276,7 +276,7 @@
                   </figcaption>
                 </figure>
                 </div>  
-                <br><br>
+                <br>
                 <div class="citation">
                   <footl>
                     <footi>Silberman et al., <a href="http://cs.nyu.edu/~silberman/projects/indoor_scene_seg_sup.html">Indoor Segmentation and Support Inference from RGBD Images,</a> European Conference on Computer Vision (ECCV) 2012.</footi>
@@ -371,47 +371,72 @@
           <video src="data/movies/city_loop_lores.mp4" height="100%" controls loop class="slideautostart"></video>
         </section>
         
-        <!-- SEQUENTIAL POINT CLOUDS -->
         <section>
-          <h2>Sequential Clouds & Occlusion Reasoning </h2>
-          <p> Occlusions appear as “shadows” in rendered point clouds. </p>
-          <video src="data/movies/occlusion_demo.mp4" height="50%" controls loop class="slideautostart"></video>
-          <p> These blank areas limit our ability to have temporal continuity - object permanence.</p>
-        </section>
-        
-        <section>
-          <h2> Pointcloud <em>without</em> Occlusion Reasoning </h2>
-          <p> For instance, here the lemon (which we want to keep track of) and much of the table is hidden by the bowl.</p>
-          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_without.pcd&psize=3" width="1100" height="750" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
-          </iframe>
-          <p>Fortunately, we can perform some <span class="fragment highlight-green">low-level reasoning</span> about occlusions.</p>
-        </section>
-        
-        <section>
-          <h2>Sequentially Updated Octree <cite></cite> </h2>
-          <p> If we assume no camera motion, we can reason about why voxels “disappear” </p>
-          <p> Check for occlusion by ray-tracing paths from voxel to camera</p>
-          <video src="data/movies/occlusion_manip1_other_input_centroids.mp4" width="100%" controls loop class="slideautostart"></video>
-          <br><br><br><br>
-
-          <div class='citation'>
-            <footl>
-              <footi>Papon et al., <a href="http://www.jeremiepapon.com/iros-2013-video-segmentation/">Point Cloud Video Object Segmentation using a Persistent Supervoxel World-Model,</a> Intelligent Robots and Systems (IROS) 2013.</footi>
-            </footl>
+          <h2>Overview of Methodology</h2>
+          <div>
+           <img src="data/Overall_Cropped.svg" width="100%">
+           </div>
+          <div style="position:absolute;left:785px;top:137px;">
+            <video src="data/movies/cutting_noocc_result_png.mp4" height="50%" loop class="slideautostart"></video>
           </div>
         </section>
         
+        <!-- SEQUENTIAL POINT CLOUDS -->
         <section>
-          <h2> Demonstration of Occlusion Reasoning </h2>
-          <p> Left frame shows input data without occlusion reasoning </p>
-          <video src="data/movies/occlusion_comparison.mp4" width="100%" controls loop class="slideautostart"></video>
-          <p> Right shows the same input with ray-tracing checks </p>
+          <section>
+            <h2>Sequential Clouds & Occlusion Reasoning </h2>
+            <p> Occlusions appear as “shadows” in rendered point clouds. </p>
+            <p> For instance, here the lemon (which we want to keep track of) and much of the table is hidden by the bowl.</p>
+            <video src="data/movies/occlusion_demo.mp4" height="50%" controls loop class="slideautostart"></video>
+            <p> These blank areas limit our ability to have temporal continuity - object permanence.</p>
+          </section>
+          
+          <section>
+            <h2> Pointcloud <em>without</em> Occlusion Reasoning </h2>
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_without.pcd&psize=3" width="1100" height="750" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            </iframe>
+            <p>Fortunately, we can perform some <span class="fragment highlight-green">low-level reasoning</span> about occlusions.</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Sequentially Updated Octree <cite></cite> </h2>
+            <p> If we assume no camera motion, we can reason about why voxels “disappear” </p>
+            <p> Check for occlusion by ray-tracing paths from voxel to camera</p>
+            <video src="data/movies/occlusion_manip1_other_input_centroids.mp4" width="100%" controls loop class="slideautostart"></video>
+            <p> Camera is <strong style="color:red">facing us</strong> from this perspective - notice shadows extend towards the viewer.</p>
+            <br><br>
+
+            <div class='citation'>
+              <footl>
+                <footi>Papon et al., <a href="http://www.jeremiepapon.com/iros-2013-video-segmentation/">Point Cloud Video Object Segmentation using a Persistent Supervoxel World-Model,</a> Intelligent Robots and Systems (IROS) 2013.</footi>
+              </footl>
+            </div>
+          </section>
+          
+          <section>
+            <h2> Demonstration of Occlusion Reasoning </h2>
+            <p> Left frame shows input data without occlusion reasoning </p>
+            <video src="data/movies/occlusion_comparison.mp4" width="100%" controls loop class="slideautostart"></video>
+            <p> Right shows the same input with ray-tracing checks </p>
+          </section>
+          
+          <section>
+            <h2> Pointcloud <em>with</em> Occlusion Reasoning </h2>
+            <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_with.pcd&psize=3" width="1100" height="750" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
+            </iframe>
+          </section>
         </section>
         
         <section>
-          <h2> Pointcloud <em>with</em> Occlusion Reasoning </h2>
-          <iframe   src="http://pointclouds.org/assets/viewer/pcl_viewer.html?load=http://134.76.92.76/data/occlusion_with.pcd&psize=3" width="1100" height="750" marginwidth="0" marginheight="0" frameborder="no" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" style="max-width: 100%;">
-          </iframe>
+          <h2>Overview of Methodology</h2>
+          <div>
+           <img src="data/Overall_Cropped.svg" width="100%">
+           </div>
+          <div style="position:absolute;left:785px;top:137px;">
+            <video src="data/movies/cutting_noocc_result_png.mp4" height="50%" loop class="slideautostart"></video>
+          </div>
         </section>
         
         <!-- PARTICLE FILTERING -->
@@ -514,7 +539,7 @@
         <section>
           <h2> Why can't we just track Supervoxels? </h2>
           <p> Cannot track exclusively at low-level due to the “aperture problem” <cite></cite></p>
-          <embed src="data/flash/twosquares.swf" width="90%" height="80%"></embed>
+          <embed src="data/flash/twosquares.swf" width="90%" height="70%"></embed>
           <p class="rcred"><a href="http://web.mit.edu/persci/demos/Motion&Form/demos/download.html">MIT Perceptual Science Group</a></p>
           <br>
           <div class='citation'>
@@ -528,7 +553,7 @@
           <h2>Cortical Feedback Mechanisms</h2>
           <p>Humans appear to use top-down feedback mechanisms <cite></cite> </p>
           <p>Feedback allows high-level areas to influence low-level vision, even receptive fields </p>
-          <div class="ctr" style="height:80%; width:80%">
+          <div class="ctr" style="height:80%; width:70%">
           <figure class="embed hide-smooth dark" >
                   <img src="data/feedback_connections.jpg" >
                   <figcaption style="font-size:1.0em">
@@ -639,9 +664,13 @@
           <div style="font-size: 110%; line-height: 145%">
             <p> Many opportunities exist now that we have low-level temporal connections </p>
             <ul> 
-              <li class="fragment">Apply hierarchal approach to occlusion reasoning</li>
               <li class="fragment">Bootstrap learning - learn “objectness” from observations</li>
-              <li class="fragment">Higher levels in the hierarchy - sensor pose reasoning </li>
+              <li class="fragment">Higher levels in the hierarchy </li>
+              <ul class="fragment" style="list-style-type: none">
+                <li> Sensor pose - improve performance with moving camera </li>
+                <li> Object recognition - group parts into meaningful objects </li>
+                <li> Occlusion reasoning - remove self occlusion, occluded movement </li>
+              </ul>
               <li class="fragment">Dynamic level of detail & attention</li>
                 <ul class="fragment" style="list-style-type: none">
                   <li>Less samples on large uniform surfaces </li>
@@ -649,11 +678,11 @@
                 </ul>
             </ul>
           </div>
-          <br><br>
+          <br>
           <div style="width:50%; float:left">
             <figure class="embed hide-smooth dark" >
                 <img src="data/icub_blocks.jpg">
-                <figcaption style="font-size:0.85em">
+                <figcaption style="font-size:1.0em">
                     Bootstrapping Visual Understanding...
                 </figcaption>
             </figure>
@@ -661,10 +690,10 @@
           </div>
           <div style="width:50%; float:right">
           <br>
-            <figure class="embed hide-smooth dark" >
+            <figure class="fragment embed hide-smooth dark" data-fragment-index="1"  >
                 <img src="data/icub_block_evil.jpg">
-                <figcaption style="font-size:0.85em">
-                    But at what cost?
+                <figcaption style="font-size:1.0em">
+                    So they never lose track of you.
                 </figcaption>
             </figure>
             <p class="rcred"><a href="http://www.icub.org/">iCub</a></p>
@@ -717,6 +746,8 @@
           
           
           <img src="data/point-cloud-library-logo.png">
+          <p style="font-size:70%"> <em style="color: green">Colleagues & Friends:</em> Markus Schoeler, Alexey Abramov, Tomas Kulvicius, Minija Tamosiunaite, Simon Stein, Simon Reich, Eren Aksoy, Christian Tetzlaff, Ursula Hahn-Wörgötter, Jan-Matthias Braun, Timo Luddecke, Timo Nachstedt, Alejandro Agostini, Michael Fauth, Xiaofeng Xiong, Sakya Dasgupta, Yinyun Li, Rajeeth Savarimuthu, Anders Buch, Sergey Alexandrov. </p>
+          <p style="font-size:90%">My loving and supportive parents - <br><em style="color: green"> Jean-Marc and Marian. </em> </p>
           </div>
         </section>
         

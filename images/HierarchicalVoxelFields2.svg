@@ -13,8 +13,8 @@
    width="1024"
    height="620"
    id="svg2"
-   inkscape:version="0.48.2 r9819"
-   sodipodi:docname="HierarchicalVoxelFields08.svg">
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="HierarchicalVoxelFields2.svg">
   <sodipodi:namedview
      pagecolor="#111111"
      bordercolor="#666666"
@@ -24,15 +24,15 @@
      guidetolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:window-width="1264"
-     inkscape:window-height="1362"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
      id="namedview12"
      showgrid="true"
      inkscape:zoom="1.0766271"
-     inkscape:cx="288.56009"
-     inkscape:cy="235.48434"
-     inkscape:window-x="1280"
-     inkscape:window-y="0"
+     inkscape:cx="30.488575"
+     inkscape:cy="290.00847"
+     inkscape:window-x="-7"
+     inkscape:window-y="510"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      inkscape:snap-bbox="false"
@@ -226,12 +226,12 @@
   <rect
      style="fill:none;stroke:#00ff00;stroke-width:3.8889997;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
      id="rect2985"
-     y="88.760025"
-     x="236.88339"
+     y="72.186272"
+     x="205.37804"
      ry="5.3890839"
-     height="50"
-     width="113.11661"
-     rx="5.3890839" />
+     height="66.573746"
+     width="174.74776"
+     rx="5.3890834" />
   <text
      xml:space="preserve"
      style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#00ff00;fill-opacity:1;stroke:none;font-family:Montserrat;-inkscape-font-specification:Montserrat Bold Italic"
@@ -258,27 +258,31 @@
   <text
      xml:space="preserve"
      style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff00ff;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans Bold Italic"
-     x="103.94677"
-     y="90.888245"
+     x="110.44855"
+     y="84.386459"
      id="text18340"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       x="106.80419"
-       y="90.888245"
-       id="tspan18342"><tspan
-         x="103.94677"
-         y="90.888245"
-         id="tspan18344">LCCP Initializes </tspan></tspan><tspan
-       sodipodi:role="line"
-       x="129.81395"
-       y="118.38824"
+       x="110.44855"
+       y="84.386459"
        id="tspan18346"><tspan
-         x="129.81395"
-         y="118.38824"
-         id="tspan18348">Trackers</tspan></tspan></text>
+         x="110.44855"
+         y="84.386459"
+         id="tspan18344">LCCP</tspan></tspan><tspan
+       sodipodi:role="line"
+       x="110.44855"
+       y="111.88646"
+       id="tspan3057">Segmentation</tspan><tspan
+       sodipodi:role="line"
+       x="113.30597"
+       y="84.386459"
+       id="tspan3053"><tspan
+         x="110.44855"
+         y="84.386459"
+         id="tspan3055" /></tspan></text>
   <path
      style="fill:none;stroke:#ff00ff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1MendB)"
-     d="m 157.2482,210.41972 c 0,0 -61.251179,-84.74862 79.63519,-96.65969"
+     d="m 157.2482,210.41972 c 0,0 -82.614193,-86.60627 58.27218,-98.51734"
      id="path4663"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cc" />
@@ -350,12 +354,16 @@
   <text
      xml:space="preserve"
      style="font-size:20px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#00ff00;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans Bold Italic"
-     x="294.15335"
-     y="118.43358"
+     x="292.15134"
+     y="97.821777"
      id="text18358"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan18360"
-       x="294.15335"
-       y="118.43358">Tracker</tspan></text>
+       x="294.74899"
+       y="97.821777">Convex Conn. </tspan><tspan
+       sodipodi:role="line"
+       x="292.15134"
+       y="122.82178"
+       id="tspan3047">Component</tspan></text>
 </svg>
