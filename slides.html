@@ -164,6 +164,16 @@
           <p class="rcred"><a href="http://www.pointclouds.org/">Point Cloud Library (PCL)</a></p>
         </section>  
         -->
+        <section>
+          <h2>Overview of Methodology</h2>
+          <div>
+           <img src="data/Overall_Cropped.svg" width="100%">
+           </div>
+          <div style="position:absolute;left:785px;top:137px;">
+            <video src="data/movies/cutting_noocc_result_png.mp4" height="50%" loop class="slideautostart"></video>
+          </div>
+          
+        </section>
         
         <section>
           <h2>A Point Cloud</h2>
@@ -206,11 +216,11 @@
               <li class="fragment">This gives us back pixel-like (grid) relations, while keeping real 3D adjacency</li>
               <li class="fragment">Region growing and connectivity graph become very efficient</li>
             </ul>
-          <div class="ctr w90">
+          <div class="ctr w80">
             <figure class="embed hide-smooth dark" >
-              <img src="">
+              <img src="data/AdjacencyOctree.svg">
               <figcaption style="font-size:1.0em">
-                TODO Adjacency Octree - Graph structure from point clouds.
+                Octree Adjacency Structure - Leaves now link to their spatial neighbors.
               </figcaption>
             </figure>
           </div>
@@ -589,15 +599,39 @@
           <h2>Summary</h2>
           <div style="font-size: 110%; line-height: 145%">
             <p>We have presented a novel pipeline for creating spatio-temporal connections in point cloud video </p>
-            <p class="fragment"> Importantly, our method:</p>
-            <ul>
-              <li class="fragment">Can handle occlusions - labels persist </li>
-              <li class="fragment">Does not make a-priori assumptions about objects</li>
-              <li class="fragment">Handles rapid movement of people/cameras</li>
-              <li class="fragment">Provides stable temporal-supervoxels that can be used for learning</li>
-              <li class="fragment">TODO Anything else?</li>
-            </ul>
+            <div style="float:right">
+              <video src="data/movies/cutting_noocc_result_png.mp4" height="60%" loop class="slideautostart"></video>
+            </div>
+            <div style="width:65%">
+              <p class="fragment"> Importantly, our method:</p>
+              <ul>
+                <li class="fragment">Can handle occlusions - labels persist </li>
+                <li class="fragment">Does not make a-priori assumptions about objects</li>
+                <li class="fragment">Handles rapid movement of people/cameras</li>
+                <li class="fragment">Provides stable temporal-supervoxels that can be used for learning</li>
+              </ul>
+            </div>
           </div>
+          <br>
+          <div class="fragment">
+            <div style="width:50%; float:left">
+              <p>Other Contributions</p>
+              <ul>
+                <li> Oculus vision GUI </li>
+                <li> All algorithms have been released as Open Source </li>
+                <li> 2D Tracking and Segmentation using Particle Filters </li>
+              </ul>
+            </div>
+            <div style="width:40%; float:right">
+              <figure class="embed hide-smooth dark" >
+                  <img src="data/oculus.png">
+                  <figcaption style="font-size:0.7em">
+                      Oculus Vision GUI
+                  </figcaption>
+              </figure>
+            </div>
+          </div>
+          
         </section>
         
         <section>
@@ -615,13 +649,25 @@
                 </ul>
             </ul>
           </div>
-          <div class="fragment">
-          <p>Other Contributions</p>
-          <ul>
-            <li> Oculus vision GUI </li>
-            <li> All algorithms have been released as Open Source </li>
-            <li> 2D Tracking and Segmentation using Particle Filters </li>
-          </ul>
+          <br><br>
+          <div style="width:50%; float:left">
+            <figure class="embed hide-smooth dark" >
+                <img src="data/icub_blocks.jpg">
+                <figcaption style="font-size:0.85em">
+                    Bootstrapping Visual Understanding...
+                </figcaption>
+            </figure>
+            <p class="rcred"><a href="http://www.icub.org/">iCub</a></p>
+          </div>
+          <div style="width:50%; float:right">
+          <br>
+            <figure class="embed hide-smooth dark" >
+                <img src="data/icub_block_evil.jpg">
+                <figcaption style="font-size:0.85em">
+                    But at what cost?
+                </figcaption>
+            </figure>
+            <p class="rcred"><a href="http://www.icub.org/">iCub</a></p>
           </div>
         </section>
         

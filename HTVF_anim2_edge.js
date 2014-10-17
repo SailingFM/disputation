@@ -224,24 +224,24 @@
                             'none'
                         ],
                         [
-                            "eid12",
+                            "eid28",
                             "display",
                             0,
                             0,
                             "linear",
-                            "${HierarchicalVoxelFields6}",
+                            "${HierarchicalVoxelFields9}",
                             'none',
                             'none'
                         ],
                         [
-                            "eid6",
+                            "eid9",
                             "display",
                             0,
                             0,
                             "linear",
-                            "${HierarchicalVoxelFields0}",
-                            'block',
-                            'block'
+                            "${HierarchicalVoxelFields3}",
+                            'none',
+                            'none'
                         ],
                         [
                             "eid11",
@@ -294,14 +294,14 @@
                             'none'
                         ],
                         [
-                            "eid28",
+                            "eid6",
                             "display",
                             0,
                             0,
                             "linear",
-                            "${HierarchicalVoxelFields9}",
-                            'none',
-                            'none'
+                            "${HierarchicalVoxelFields0}",
+                            'block',
+                            'block'
                         ],
                         [
                             "eid27",
@@ -310,66 +310,6 @@
                             0,
                             "linear",
                             "${HierarchicalVoxelFields10}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid22",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields15}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid23",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields14}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid21",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields16}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid7",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields1}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid8",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields2}",
-                            'none',
-                            'none'
-                        ],
-                        [
-                            "eid26",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${HierarchicalVoxelFields11}",
                             'none',
                             'none'
                         ],
@@ -384,12 +324,72 @@
                             'none'
                         ],
                         [
-                            "eid9",
+                            "eid23",
                             "display",
                             0,
                             0,
                             "linear",
-                            "${HierarchicalVoxelFields3}",
+                            "${HierarchicalVoxelFields14}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid12",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields6}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid8",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields2}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid7",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields1}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid26",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields11}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid21",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields16}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid22",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${HierarchicalVoxelFields15}",
                             'none',
                             'none'
                         ]
