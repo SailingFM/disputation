@@ -789,37 +789,18 @@
           <h2> Current Work - Estimating Pose using deep CNNs </h2>
           <p> Generic 6DoF Pose Estimation is a <em>hard</em> problem </p>
           <ul>
-            <li class="fragment"></li>
-            <li class="fragment">Does not make a-priori assumptions about objects</li>
+            <li class="fragment">Baseline methods work by finding feature or point correspondences (e.g. ICP)</li>
+            <li class="fragment">Much effort has been spent designing model-based approaches (e.g. Kinect random forests skeletons)</li>
           </ul>
-          <span class="fragment highlight-green"> <em>without</em> needing to specify a-priori objects.</p>
+          <span class ="fragment"><span class="fragment highlight-green"> <em>without</em> needing to specify a-priori objects.</span>
           <figure class="embed hide-smooth dark" >
-                  <img src="data/splitting_objects.svg" >
+                  <img src="" >
                   <figcaption style="font-size:1.0em">
-                    Splitting objects are problematic if we segment and track using a-priori models. <br> How do we label the pieces?
+                    Can we avoid needing to design features for correspondences, and learn them instead?
                   </figcaption>
           </figure>
-          <p class="fragment"> We have our low level patch representation - Supervoxels. </p>
-          <p class="fragment"> We have en efficient tracking method. </p>
-          <p class="fragment" style="font-size:150%; text-align:center"> So, what's the problem? </p>
-        </section>
-        
-        <section>
-            <h2>Network Architecture</h2>
-            <p> Pretty standard configuration except for input layer, a la Krizhevsky Imagenet<cite></cite>
-            <figure class="embed-top reveal-smooth dark" >
-               <div class="ctr w80">
-                  <img src="data/pose/Architecture.png">
-                  <figcaption style="font-size:1.0em">
-                      Network Architecture - 3 Conv. layers, 2 fully connected. 
-                  </figcaption>
-              </div>
-            </figure><br>
-            <div class='citation'>
-              <footl>
-                <footi>Krizhevsky, et al. <a href="http://papers.nips.cc/paper/4824-imagenet">"Imagenet classification with deep convolutional neural networks."</a> <em> NIPS </em> 2012.</footi>
-              </footl>
-            </div>
+          <p class="fragment">Unfortunately, generic pose is very difficult to get training data for.</p>
+          <p class="fragment" style="font-size:150%; text-align:center">Fortunately, we can synthesize it!</p>
         </section>
         
         <section>
@@ -830,7 +811,7 @@
             <br>
             <li class="fragment">Why Chairs?</li>
             <div class="fragment" >
-              <ul >
+              <ul style="list-style-type: none">
                 <li>Lots of them, aligned with canonical pose</li>
                 <li>Can limit degrees of freedom initially</li>
                 <li>Lots of intra-class variability, but can still generalize</li>
@@ -1037,30 +1018,48 @@
         </section>
         
          <section>
+            <h2>Network Architecture</h2>
+            <p> Pretty standard configuration except for input layer, a la Krizhevsky Imagenet<cite></cite>
+            <figure class="embed-top reveal-smooth dark" >
+               <div class="ctr w80">
+                  <img src="data/pose/Architecture.png">
+                  <figcaption style="font-size:1.0em">
+                      Network Architecture - 3 Conv. layers, 2 fully connected. 
+                  </figcaption>
+              </div>
+            </figure><br>
+            <div class='citation'>
+              <footl>
+                <footi>Krizhevsky, et al. <a href="http://papers.nips.cc/paper/4824-imagenet">"Imagenet classification with deep convolutional neural networks."</a> <em> NIPS </em> 2012.</footi>
+              </footl>
+            </div>
+        </section>
+        
+         <section>
             <h2>Early Results ?!?!</h2>
         </section>
         
         <section>
           <h2>Summary</h2>
           <div style="font-size: 110%; line-height: 145%">
-            <p>We have presented a novel pipeline for creating spatio-temporal connections in point cloud video </p>
+            <p>We have presented methods for segmenting and tracking streaming point clouds </p>
             <div style="float:right">
               <video src="data/movies/cutting_noocc_result_png.mp4" height="60%" loop class="slideautostart"></video>
             </div>
             <div style="width:65%">
-              <p class="fragment"> Importantly, our method:</p>
+              <p class="fragment"> Our methods:</p>
               <ul>
                 <li class="fragment">Can handle occlusions - labels persist </li>
-                <li class="fragment">Does not make a-priori assumptions about objects</li>
-                <li class="fragment">Handles rapid movement of people/cameras</li>
-                <li class="fragment">Provides stable temporal-supervoxels that can be used for learning</li>
+                <li class="fragment">No a-priori assumptions about objects</li>
+                <li class="fragment">Can handle rapid movement of people/cameras</li>
+                <li class="fragment">Provide stable temporal-supervoxels and segments that can be used for learning</li>
               </ul>
             </div>
           </div>
-          <br>
+          <p class="fragment"> Presented ongoing research into applying visual learning to point cloud data. </p> <br>
           <div class="fragment">
             <div style="width:50%; float:left">
-              <p>Other Contributions</p>
+              <p>Other Work</p>
               <ul>
                 <li> Oculus vision GUI </li>
                 <li> All algorithms have been released as Open Source </li>
@@ -1084,14 +1083,13 @@
           <div style="font-size: 110%; line-height: 145%">
             <p> Many opportunities exist now that we have low-level temporal connections </p>
             <ul> 
-              <li class="fragment">Bootstrap learning - learn “objectness” from observations</li>
-              <li class="fragment">Higher levels in the hierarchy </li>
-              <ul class="fragment" style="list-style-type: none">
-                <li> Sensor pose - improve performance with moving camera </li>
-                <li> Object recognition - group parts into meaningful objects </li>
-                <li> Occlusion reasoning - remove self occlusion, occluded movement </li>
-              </ul>
-              <li class="fragment">Dynamic level of detail & attention</li>
+              <li class="fragment">Bootstrap learning on video use temporal supervoxels as ground truth to learn features for segmenting video </li>
+              <li class="fragment">Use temporal supervoxels as input feature, learn to segment out objects, class-free</li>
+              
+              <li class="fragment"> Secondary input stream in CNN architecture - object to estimate pose of in scene, how well object matches observation.</li>
+
+              <li class="fragment"> Sensor pose - use synthetic data to train odometry features</li>
+              <li class="fragment">Dynamic level of detail & attention for Supervoxels</li>
                 <ul class="fragment" style="list-style-type: none">
                   <li>Less samples on large uniform surfaces </li>
                   <li>More samples on small irregular areas </li>
@@ -1122,7 +1120,7 @@
         
         <section>
           <h2>Questions?</h2>
-          <h4 align="left">Related Publications</h4>
+          <h4 align="left">Selected Related Publications</h4>
           <ul style="font-size: 60%; line-height: 135%; width:50%; float:left">
             <li>Schoeler, M.;<strong>Papon, J.</strong>;  Wörgötter, F., <a href="http://www.jeremiepapon.com/">Constrained Planar Cuts - Object Partitioning for Point Clouds,</a> Computer Vision and Pattern Recognition (CVPR) 2015, June 2015.</li>
             <li><strong>Papon, J.</strong>; Schoeler, M.; Wörgötter, F., <a href="http://www.jeremiepapon.com/wacv-2015-tracking/">Spatially Stratified Correspondence Sampling for Real-Time Point Cloud Tracking,</a> Applications of Computer Vision (WACV), 2015 IEEE International Conference on, Jan. 2015.</li>
