@@ -417,8 +417,8 @@
         
         <section>
           <h2>CPC- Constrained Planar Cuts</h2>
-          <p>LCCP has a very strict cutting criterion, now we will relax it.</p> <br>
-            <div class="ctr w100">
+          <p>LCCP has a very strict cutting criterion, now we will relax it.</p>
+            <div class="ctr w70">
             <figure class="embed reveal-smooth dark" >
               <img src="data/LCCP_Fail.svg">
               <figcaption style="font-size:1.0em">
@@ -437,7 +437,7 @@
         <section>
           <h2>CPC- Constrained Planar Cuts</h2>
           <div class="ctr w100">
-            <div class="ctr w80">
+            <div class="ctr w70">
               <figure class="embed reveal-smooth dark" >
                 <img src="data/Chair.svg">
                 <figcaption style="font-size:1.0em">
@@ -465,29 +465,41 @@
         <section>
           <section>
             <h2>Results on Princeton Segmentation Benchmark</h2>
-            <div class="ctr w100">
+            <div class="ctr w90">
               <figure class="embed reveal-smooth dark" >
-                <img src="data/LCCP_Fail.svg">
+                <img src="data/Princeton_Qualitative.svg">
                 <figcaption style="font-size:1.0em">
-                  LCCP Fails when concavities don't completely isolate parts.
+                  Typical Results on Benchmark Dataset
                 </figcaption>
               </figure>
             </div>
               <br>
               <div class='citation'>
                 <footl>
-                  <footi>Schoeler, M.; <strong>Papon, J.</strong>;  Wörgötter, F., Constrained Planar Cuts - Object Partitioning for Point Clouds,</a> Computer Vision and Pattern Recognition (CVPR) 2015, June 2015.</footi>
+                  <footi>X. Chen et al. A benchmark for 3d mesh segmentation.,</a>in Transactions on Graphics, 2009.</footi>
                 </footl>
               </div>
             </section>
             
             <section>
             <h2>Directed Cuts</h2>
-            <div class="ctr w100">
+            <div class="ctr w90">
               <figure class="embed reveal-smooth dark" >
                 <img src="data/Directed_vs_undirected_weights.svg">
                 <figcaption style="font-size:1.0em">
                   Cuts are weighted by relation to concave connection being cut
+                </figcaption>
+              </figure>
+            </div>
+            </section>
+            
+            <section>
+            <h2>Quantitiative Results</h2>
+            <div class="ctr w90">
+              <figure class="embed reveal-smooth dark" >
+                <img src="data/Princeton_Quantitative.svg">
+                <figcaption style="font-size:1.0em">
+                  Quantitiative Measures on Princeton Dataset
                 </figcaption>
               </figure>
             </div>
@@ -603,21 +615,41 @@
         <section>
           <section>
             <h2> Results in Real Application </h2>
-            <video src="data/movies/humandemo.mp4" height="100%" controls loop class="slideautostart"></video>
-             <p class="rcred"><a href="http://www.intellact.eu/">IntellAct Project</a></p>
+            <video src="data/movies/Demo4Fast.mp4" height="100%" controls loop class="slideautostart"></video>
+              <p class="rcred"><a href="http://www.intellact.eu/">IntellAct Project</a></p>
           </section>
-          
+          <section>
+            <h2> Results in Real Application </h2>
+            <video src="data/movies/humandemo.mp4" height="100%" controls loop class="slideautostart"></video>
+              <p class="rcred"><a href="http://www.intellact.eu/">IntellAct Project</a></p>
+          </section>
+        </section>
+        
+        <section>
           <section>
             <h2> Results on Synthetic Benchmark <cite></cite> </h2>
             <div align="center">
-              <video src="data/movies/tide.mp4" height="100%" controls loop class="slideautostart"></video>
-            </div>
-            <br>
+              <video src="data/movies/milk_small.mp4" height="100%" controls loop class="slideautostart"></video>
+            </div> <br>
             <div class='citation'>
               <footl>
                 <footi>Choi and Christensen,<a href="http://www.cc.gatech.edu/~cchoi/rgbd_obj_tracking.html" “RGB-D> Object Tracking: A Particle Filter Approach on GPU,</a> International Conference on Intelligent Robots and Systems (IROS), 2013.
                 </footi>
               </footl>
+            </div>
+          </section>
+          
+          <section>
+            <h2> Results on Synthetic Benchmark  </h2>
+            <div align="center">
+              <video src="data/movies/Tide_small.mp4" height="100%" controls loop class="slideautostart"></video>
+            </div>
+          </section>
+          
+          <section>
+            <h2> Results on Synthetic Benchmark  </h2>
+            <div align="center">
+              <video src="data/movies/kinect.mp4" height="100%" controls loop class="slideautostart"></video>
             </div>
           </section>
         </section>
@@ -678,7 +710,7 @@
           </div>
         </section>
         
-        <section>
+        <!--section>
           <h2>Cortical Feedback Mechanisms</h2>
           <p>Humans appear to use top-down feedback mechanisms <cite></cite> </p>
           <p>Feedback allows high-level areas to influence low-level vision, even receptive fields </p>
@@ -696,7 +728,7 @@
               <footi> Gilbert and Wu Li. <a href="http://www.nature.com/nrn/journal/v14/n5/full/nrn3476.html">Top-down influences on visual processing,</a> <em>Nature Reviews Neuroscience,</em> 2013.</footi>
             </footl>
           </div>
-        </section>
+        </section-->
         
         <section>
           <h2> Hierarchical Temporal (super)Voxel Fields (HTVF) </h2>
@@ -748,6 +780,265 @@
         </section>
         
 
+        <!-- 
+        +++++++++++++++++++++
+        MACHINE LEARNING STUFF
+        +++++++++++++++++++++
+        -->
+        <section>
+          <h2> Current Work - Estimating Pose using deep CNNs </h2>
+          <p> Generic 6DoF Pose Estimation is a <em>hard</em> problem </p>
+          <ul>
+            <li class="fragment"></li>
+            <li class="fragment">Does not make a-priori assumptions about objects</li>
+          </ul>
+          <span class="fragment highlight-green"> <em>without</em> needing to specify a-priori objects.</p>
+          <figure class="embed hide-smooth dark" >
+                  <img src="data/splitting_objects.svg" >
+                  <figcaption style="font-size:1.0em">
+                    Splitting objects are problematic if we segment and track using a-priori models. <br> How do we label the pieces?
+                  </figcaption>
+          </figure>
+          <p class="fragment"> We have our low level patch representation - Supervoxels. </p>
+          <p class="fragment"> We have en efficient tracking method. </p>
+          <p class="fragment" style="font-size:150%; text-align:center"> So, what's the problem? </p>
+        </section>
+        
+        <section>
+            <h2>Network Architecture</h2>
+            <p> Pretty standard configuration except for input layer, a la Krizhevsky Imagenet<cite></cite>
+            <figure class="embed-top reveal-smooth dark" >
+               <div class="ctr w80">
+                  <img src="data/pose/Architecture.png">
+                  <figcaption style="font-size:1.0em">
+                      Network Architecture - 3 Conv. layers, 2 fully connected. 
+                  </figcaption>
+              </div>
+            </figure><br>
+            <div class='citation'>
+              <footl>
+                <footi>Krizhevsky, et al. <a href="http://papers.nips.cc/paper/4824-imagenet">"Imagenet classification with deep convolutional neural networks."</a> <em> NIPS </em> 2012.</footi>
+              </footl>
+            </div>
+        </section>
+        
+        <section>
+          <h2>Synthetic Dataset</h2>
+          <ul>
+            <li class="fragment">Generate data with random poses so we can have accurate ground truth</li>
+            <li class="fragment">Use meshes from Princeton ModelNet <cite></cite> - for now, chairs</li>
+            <br>
+            <li class="fragment">Why Chairs?</li>
+            <div class="fragment" >
+              <ul >
+                <li>Lots of them, aligned with canonical pose</li>
+                <li>Can limit degrees of freedom initially</li>
+                <li>Lots of intra-class variability, but can still generalize</li>
+              </ul>
+              <figure class="embed-bottom reveal-smooth dark" >
+                <div class="ctr w100">
+                    <img src="data/pose/chairs.png">
+                    <figcaption style="font-size:1.0em">
+                        Chairs. Lots of Chairs.
+                    </figcaption>
+                </div>
+              </figure>
+            </div>
+          </ul>
+          <div class='citation'>
+              <footl>
+                <footi>Wu, et al. <a href="http://arxiv.org/abs/1406.5670">"3D ShapeNets for 2.5D Object Recognition and Next-Best-View Prediction"</a> <em> arXiv </em> 2014.</footi>
+              </footl>
+          </div>
+        </section>
+        
+        <section>
+            <h2>Synthetic Data</h2>
+            <p> Generate data using Blensor Python API and a custom Kinect Sensor Model</p>
+            <p> Basic "Room" with 7 randomly (not touching) placed chairs.</p>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/blender.png">
+              </div>
+            </figure>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Synthetic Data - Depth</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_depth.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Depth</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/1_depth.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Synthetic Data - Normals</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_nx.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Normals</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_ny.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Normals</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_nz.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Synthetic Data - Labels</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_labels.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Labels</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/1_labels.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Synthetic vs Real</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_depth.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic vs Real</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/real_depth.png">
+              </div>
+            </figure>
+          </section>
+          
+          <section>
+            <h2>Synthetic vs Real</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_nx.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic vs Real</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/real_nx.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Signatures - Depth</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/depth_sigs.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Signatures - nx</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/nx_sigs.png">
+              </div>
+            </figure>
+          </section>
+          
+          <section>
+            <h2>Signatures - ny</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/ny_sigs.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Signatures - nz</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/nz_sigs.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>LCCP to Generate Proposals</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_lccp.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Labels</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/0_labels.png">
+              </div>
+            </figure>
+          </section>
+          
+          <section>
+            <h2>LCCP to Generate Proposals</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/1_lccp.png">
+              </div>
+            </figure>
+          </section>
+          <section>
+            <h2>Synthetic Data - Labels</h2>
+            <figure class="embed-top reveal-smooth dark" >
+              <div class="ctr w80">
+                  <img src="data/pose/1_labels.png">
+              </div>
+            </figure>
+          </section>
+        </section>
+        
+         <section>
+            <h2>Early Results ?!?!</h2>
+        </section>
         
         <section>
           <h2>Summary</h2>
@@ -830,10 +1121,11 @@
         </section>
         
         <section>
-          <h2>Acknowledgements and Thanks</h2>
-          <h4 align="left">Thesis-related Publications</h4>
+          <h2>Questions?</h2>
+          <h4 align="left">Related Publications</h4>
           <ul style="font-size: 60%; line-height: 135%; width:50%; float:left">
-            <li><strong>Papon, J.</strong>;  Wörgötter, F., <a href="http://www.jeremiepapon.com/wacv-2015-tracking/">Spatially Stratified Correspondence Sampling for Real-Time Point Cloud Tracking,</a> Applications of Computer Vision (WACV), 2015 IEEE International Conference on, Jan. 2015.</li>
+            <li>Schoeler, M.;<strong>Papon, J.</strong>;  Wörgötter, F., <a href="http://www.jeremiepapon.com/">Constrained Planar Cuts - Object Partitioning for Point Clouds,</a> Computer Vision and Pattern Recognition (CVPR) 2015, June 2015.</li>
+            <li><strong>Papon, J.</strong>; Schoeler, M.; Wörgötter, F., <a href="http://www.jeremiepapon.com/wacv-2015-tracking/">Spatially Stratified Correspondence Sampling for Real-Time Point Cloud Tracking,</a> Applications of Computer Vision (WACV), 2015 IEEE International Conference on, Jan. 2015.</li>
             <br style="line-height:150%">
             <li>Stein, S.; Schoeler, M.; <strong>Papon, J.</strong>;  Wörgötter, F., <a href="http://www.jeremiepapon.com/cvpr-2014-segmentation/">Object Partitioning using Local Convexity,</a> Computer Vision and Pattern Recognition (CVPR) 2014, June 2014. </li>
             <br style="line-height:150%">
@@ -846,63 +1138,10 @@
             <li><strong>Papon, J.</strong>; Abramov, A.; Aksoy, E.; Wörgötter, F., <a href="http://www.jeremiepapon.com/wacv-2012-oculus-system/">A modular system architecture for online parallel vision pipelines,</a> Applications of Computer Vision (WACV) 2012, Jan. 2012.</li>
           </ul>
           <div style="width:40%; float:right">
-            <div style="width:30%; float:left">
-              <figure class="embed hide-smooth dark" >
-                  <img src="data/hogrefe.jpg" alt="Dieter Hogrefe">
-                  <figcaption style="font-size:0.5em">
-                      Dieter Hogrefe
-                  </figcaption>
-              </figure>
-            </div>
-             
-            <div style="width:35%; float:right">
-              <figure class="embed hide-smooth dark" >
-                  <img src="data/piater.jpg" alt="Justus Piater">
-                  <figcaption style="font-size:0.5em">
-                      Justus Piater
-                  </figcaption>
-              </figure>
-            </div>
-            
-            <div style="width:35%; float:right">
-              <figure class="embed hide-smooth dark" >
-                  <img src="data/worgotter.png" alt="Florentin Wörgötter">
-                  <figcaption style="font-size:0.5em">
-                      Florentin Wörgötter
-                  </figcaption>
-              </figure>
-            </div>
-          
-          
-          <img src="data/point-cloud-library-logo.png">
-          <p style="font-size:70%"> <em style="color: green">Colleagues & Friends:</em> Markus Schoeler, Alexey Abramov, Tomas Kulvicius, Mohammad Aein, Minija Tamosiunaite, Simon Stein, Simon Reich, Eren Aksoy, Christian Tetzlaff, Ursula Hahn-Wörgötter, Jan-Matthias Braun, Timo Luddecke, Timo Nachstedt, Alejandro Agostini, Michael Fauth, Xiaofeng Xiong, Sakya Dasgupta, Yinyun Li, Rajeeth Savarimuthu, Anders Buch, Sergey Alexandrov. </p>
-          <p style="font-size:90%">My loving and supportive parents - <br><em style="color: green"> Jean-Marc and Marian. </em> </p>
+            <img src="data/point-cloud-library-logo.png">
           </div>
         </section>
-        
-        <section>
-          <h2> Questions? </h2>
-          <img src="data/thesis_defense.png" height="90%">
-          <p class="rcred"><a href="http://xkcd.com/1403/">XKCD</a></p>
-        </section>
 
-        <section>
-          <section>
-            <h2> HTVF - Camera Pan 0 </h2>
-            <video src="data/movies/pan0_4_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
-          </section>
-          
-          <section>
-            <h2> HTVF - Camera Pan 2 - LCCP Overlay</h2>
-            <video src="data/movies/pan2_4_rendering_result.mp4" height="100%" controls loop class="slideautostart"></video>
-          </section>
-          <section>
-          
-            <h2> HTVF - Camera Pan 1</h2>
-            <video src="data/movies/pan1_4_input_voxels.mp4" height="100%" controls loop class="slideautostart"></video>
-          </section>
-        </section>
-        
 
     <!-- End of slides. -->
 
