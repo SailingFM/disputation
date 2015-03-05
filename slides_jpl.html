@@ -3,7 +3,7 @@
   <head>
     <link href="captionss/captionss.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
-    <title>Perceptual Segmentation of Visual Streams by Tracking of Objects and Parts</title>
+    <title>Supervoxels - Temporal Voxel Manifolds and Applications</title>
     <meta name="author" content="Jérémie Papon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="reveal/css/reveal.min.css">
@@ -51,18 +51,17 @@
 
         
         <section data-background="data/Buildings_Cropped_Merge.png">
-          <h1 style="text-shadow:3px 3px #000000">Perceptual Segmentation of Visual Streams</h1>
-          <h3 style="text-shadow:2px 2px #000000"> by Tracking of Objects and Parts</h3>
+          <h1 style="text-shadow:4px 4px #000000">Supervoxels</h1>
+          <h3 style="text-shadow:3px 3px #000000">Temporal Voxel Manifolds and their Applications</h3>
           <footer style="font-size: 36px">             
-          <div> <a style="color: #00FF00;text-shadow:2px 2px #000000" href="http://www.jeremiepapon.com/"><strong>Jérémie Papon</strong></a> </div>
-          <div style="text-shadow:2px 2px #000000">
+          <div> <a style="color: #00FF00;text-shadow:4px 4px #000000" href="http://www.jeremiepapon.com/"><strong>Jérémie Papon</strong></a> </div>
+          <div style="text-shadow:3px 3px #000000">
             Georg-August-Universität Göttingen <br>
+            Bernstein Center for Computational Neuroscience <br>
             Institut für Informatik <br>
-            Göttingen, 2014 Oct 17
+            5 March 2015
           </div>
           </footer>
-          <br>
-          <p style="text-align: center; text-shadow:2px 2px #000000 "> Disputation for the award of the degree "Doctor of Philosophy" </p>
           
         </section>
 
@@ -656,11 +655,11 @@
         
         <section>
           <section>
-            <h2>Results on VR Data</h2>
+            <h2>Results on Synthetic Benchmark</h2>
             <p> 
             <figure class="embed-top reveal-smooth dark" >
                 <div style="width:100%">
-                  <img src="data/DispErrorTide.svg">
+                  <img src="data/AngularErrorOrangeJuice.svg">
                   <figcaption style="font-size:1.0em">
                       Plot of Displacement Error vs time per frame (ms) averaged across 50 VR Test Runs for different numbers of particles and samples per stratum. 
                   </figcaption>
@@ -668,10 +667,10 @@
             </figure>
           </section>
           <section>
-            <h2>Results on VR Data</h2>
+            <h2>Results on Synthetic Benchmark</h2>
             <figure class="embed-top reveal-smooth dark" >
               <div style="width:100%">
-                  <img src="data/AngularErrorMilk.svg">
+                  <img src="data/DispErrorMilk.svg">
                   <figcaption style="font-size:1.0em">
                       Plot of Rotational Error vs time per frame (ms) averaged across 50 VR Test Runs for different numbers of particles and samples per stratum. 
                   </figcaption>
@@ -794,11 +793,11 @@
           </ul>
           <span class ="fragment"><span class="fragment highlight-green"> <em>without</em> needing to specify a-priori objects.</span>
           <figure class="embed hide-smooth dark" >
-                  <img src="" >
+                  <img src="data/bunny.png" >
                   <figcaption style="font-size:1.0em">
                     Can we avoid needing to design features for correspondences, and learn them instead?
                   </figcaption>
-          </figure>
+          </figure> <br>
           <p class="fragment">Unfortunately, generic pose is very difficult to get training data for.</p>
           <p class="fragment" style="font-size:150%; text-align:center">Fortunately, we can synthesize it!</p>
         </section>
@@ -986,7 +985,7 @@
             <h2>LCCP to Generate Proposals</h2>
             <figure class="embed-top reveal-smooth dark" >
               <div class="ctr w80">
-                  <img src="data/pose/0_lccp.png">
+                  <img src="data/pose/0_lccp_boxes.svg">
               </div>
             </figure>
           </section>
@@ -1003,7 +1002,7 @@
             <h2>LCCP to Generate Proposals</h2>
             <figure class="embed-top reveal-smooth dark" >
               <div class="ctr w80">
-                  <img src="data/pose/1_lccp.png">
+                  <img src="data/pose/1_lccp_boxes.svg">
               </div>
             </figure>
           </section>
@@ -1035,10 +1034,54 @@
             </div>
         </section>
         
-         <section>
-            <h2>Early Results ?!?!</h2>
+        <section>
+            <h2>Loss Function</h2>
+            <p> MSE of transformed model points (a la ICP) </p>
+            <p>$$ L_i = \frac{1}{ \sum{w_{i,j} } } \sum_{i=1}^{N_o} \sum_{j=1}^{N_m} w_{i,j} \lVert o_i-(\theta m_i + dp) \rVert ^2$$</p>
+            <ul>
+              <li class="fragment" style="color:green">Direct measure - simply distance between points</li>
+              <li class="fragment" style="color:red">Expensive to compute!</li>
+              <li class="fragment" style="color:red">Unreliable with occlusions, partial views have local minima, not convex</li>
+            </ul>
+            <p> MSE of pose directly - euler angles, translation </p>
+            <p>$$ L_i = \lVert f - \mathbf{y_i} \rVert ^2$$</p>
+             <ul>
+              <li class="fragment" style="color:green">Cheap to compute</li>
+              <li class="fragment" style="color:green">Will give pose under heavy occlusion <span style="color:red">but no measure of reliability</span></li>
+              <li class="fragment" style="color:green">Generalizes well for classes with canonical pose (i.e. most)</li>
+              <li class="fragment" style="color:red">Possible scale issues between rotational and translational errors</li>
+              <li class="fragment" style="color:red">Regression is harder, less stable than classification</li>
+            </ul>
+            <p> Binned Pose Binary Log. Regression Classification</p>
+            <ul>
+              <li class="fragment">CNN predicts a score for a set of bins over the pose space</li>
+              <li class="fragment" style="color:green">More stable than regression, easier to train</li>
+              <li class="fragment" style="color:red">Only produces coarse pose</li>
+            </ul>
+            <p>$$ L_i = \sum_j y_{ij} \log(\sigma(f_j)) + (1 - y_{ij}) \log(1 - \sigma(f_j)) $$</p>
+
+            <p> Projected alignment? Other possibilities? </p>
         </section>
-        
+       
+        <section>
+          <section>
+              <h2>Early Results</h2>
+              <p> Minimal validation error = 0.017
+              <figure class="embed-top reveal-smooth dark" >
+                <div class="ctr w80">
+                    <img src="data/pose/train_valid_loss.png">
+                </div>
+              </figure>
+          </section>
+          <section>
+              <h2>Early Results - First Conv layer filters</h2>
+              <figure class="embed-top reveal-smooth dark" >
+                <div class="ctr w80">
+                    <img src="data/pose/responses1.png">
+                </div>
+              </figure>
+          </section>
+        </section>
         <section>
           <h2>Summary</h2>
           <div style="font-size: 110%; line-height: 145%">
@@ -1137,6 +1180,7 @@
           </ul>
           <div style="width:40%; float:right">
             <img src="data/point-cloud-library-logo.png">
+            <img src="data/theano_logo.png">
           </div>
         </section>
 
